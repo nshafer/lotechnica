@@ -1,0 +1,61 @@
+Title: A first article
+Date: 2015-09-18
+Category: test
+Status: published
+Summary: A sample first article
+
+This is a test first article.  Woot!
+
+### Content
+
+Content will `go` here.
+
+	:::python
+	print("This is a test bit of code")
+
+and another
+
+	#!python
+	def test():
+		print("This is another test")
+
+test Elixir:
+
+	:::elixir
+	def fun(opts) do
+		IO.puts "test #{opts.name}"
+		list = ~w(test list)
+		[test list]
+		regex = ~r/test/
+		foo = "bar"
+		baz = 1
+	end
+
+Test MathJax
+
+This is a test of inline math: $_\text{c} = (\pi/4) d^2$ did it work?
+
+What about a block?
+
+$$
+α_t(i) = P(O_1, O_2, … O_t, q_t = S_i λ)
+$$
+
+When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+
+test greek: $\beta$
+
+Matrix:
+
+$$
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{bmatrix} = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{bmatrix}
+$$
