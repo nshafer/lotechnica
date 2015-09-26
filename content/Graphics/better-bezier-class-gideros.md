@@ -136,23 +136,11 @@ This now gives us 34 points.  It spreads them out on the straighter parts, but p
 
 At first I expected these extra operations to slow everything down, but I figured it was worth it in certain cases. However, I was surprised to find that by far the slowest part of rendering the curve is actually having Gideros draw it as a series of connected lines.  So while my `reduce()` function *is* expensive, because it reduces the number of points so much, the end result is less drawing, and so overall it's faster.  Here are some benchmarks of the curve in the images above, running in the desktop player:
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Parameters</th>
-      <th>#points</th>
-      <th>Creation</th>
-      <th>Drawing</th>
-      <th>Reduction</th>
-      <th>Total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>100 steps, no reduce</td><td>101</td><td>0.12ms</td><td>1.94ms</td><td>0.00ms</td><td>2.07ms</td></tr>
-    <tr><td>Auto steps, no reduce</td><td>153</td><td>0.21ms</td><td>3.15ms</td><td>0.00ms</td><td>3.36ms</td></tr>
-    <tr><td>Auto steps, .1 epsilon</td><td>34</td><td>0.21ms</td><td>0.67ms</td><td>0.82ms</td><td>1.70ms</td></tr>
-  </tbody>
-</table>
+Parameters              | #points | Creation | Drawing | Reduction | Total
+----------------------- | ------- | -------- | ------- | --------- | ------
+100 steps, no reduce    | 101     | 0.12ms   | 1.94ms  | 0.00ms    | 2.07ms
+Auto steps, no reduce   | 153     | 0.21ms   | 3.15ms  | 0.00ms    | 3.36ms
+Auto steps, .1 epsilon  | 34      | 0.21ms   | 0.67ms  | 0.82ms    | 1.70ms
 
 ### Source
 
