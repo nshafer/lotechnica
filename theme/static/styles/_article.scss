@@ -1,34 +1,33 @@
 // ------------------------------------------------------------------------------------------//
 // Article
 #article {
-  @include pad(1em);
   max-width: 48em;
   margin-left: auto;
   margin-right: auto;
 
   h2 {
-    border-bottom: $base-border;
     margin: 0;
     font-size: 1.8em;
   }
 
   footer {
-    @include clearfix();
-    margin-bottom: .5em;
+    color: $medium-gray;
+    margin-bottom: 1em;
 
     time {
-      float: left;
       margin-right: 1em;
       font-size: .75em;
       font-weight: bold;
     }
     address {
-      float: right;
       font-size: .75em;
     }
   }
 
   #article-content {
+    font-size: 17px;
+    line-height: 1.7em;
+
     h1,
     h2,
     h3,
@@ -36,7 +35,7 @@
     h5,
     h6 {
       font-family: $base-font-family;
-      margin: 0 0 $small-spacing;
+      margin: $base-spacing 0 $small-spacing;
     }
 
     a {
@@ -64,8 +63,8 @@
     code {
       padding: 2px 4px;
       font-size: 90%;
-      color: #c7254e;
-      background-color: #f9f2f4;
+      color: #895C12;
+      background-color: #F9F2EB;
       border-radius: 4px;
     }
 
@@ -77,14 +76,34 @@
       line-height: 1.42857143;
       word-break: break-all;
       word-wrap: break-word;
-      color: #7b8a8b;
-      background-color: #f8f8f8;
+      color: #d0d0d0;
+      background-color: #202020;
       border: 1px solid #cccccc;
       border-radius: 4px;
     }
 
+    .highlight pre {
+      word-break: normal;
+      word-wrap: normal;
+      overflow: auto;
+    }
+
     code, kbd, pre, samp {
       font-family: $monospace-font-family;
+    }
+
+    img {
+      display: block;
+      margin: $base-spacing auto;
+    }
+
+    table {
+      @include media($large-screen-down) {
+        width: auto;
+        display: block;
+        overflow-x: auto;
+        margin: $small-spacing auto;
+      }
     }
   }
 }

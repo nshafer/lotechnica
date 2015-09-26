@@ -40,7 +40,7 @@
       margin: 0;
       font-family: $base-font-family;
 
-      @include media($small-screen-down) {
+      @include media($medium-screen-down) {
         font-size: .75em;
       }
     }
@@ -106,7 +106,7 @@
       font-style: normal;
       margin: 1.5em 0;
 
-      @include media($small-screen-down) {
+      @include media($medium-screen-down) {
         text-align: center;
       }
 

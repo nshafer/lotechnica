@@ -23,7 +23,7 @@ DEFAULT_LANG = u'en'
 
 # Theme settings
 THEME = "theme"
-PYGMENTS_STYLE = "tango"
+PYGMENTS_STYLE = "native"
 DISPLAY_PAGES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_MENU = True
 

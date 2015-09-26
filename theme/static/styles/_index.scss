@@ -34,18 +34,14 @@
     }
 
     footer {
-      @include clearfix();
-      //margin-bottom: .5em;
       color: $medium-gray;
 
       time {
-        float: left;
         margin-right: 1em;
         font-size: .75em;
         font-weight: bold;
       }
       address {
-        float: left;
         font-size: .75em;
       }
     }

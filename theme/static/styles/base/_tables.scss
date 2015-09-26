@@ -1,25 +1,30 @@
 table {
   border-collapse: collapse;
+  border-spacing: 0;
   font-feature-settings: "kern", "liga", "tnum";
   margin: $small-spacing 0;
-  table-layout: fixed;
+  //table-layout: fixed;
   width: 100%;
 }
 
 th {
   border-bottom: 1px solid shade($base-border-color, 25%);
   font-weight: 600;
-  padding: $small-spacing 0;
+  padding: $very-small-spacing $very-small-spacing;
   text-align: left;
 }
 
 td {
   border-bottom: $base-border;
-  padding: $small-spacing 0;
+  padding: $very-small-spacing $very-small-spacing;
 }
 
 tr,
 td,
 th {
   vertical-align: middle;
+}
+
+tr:nth-child(even) {
+  background-color: shade($base-background-color, 2%);
 }
