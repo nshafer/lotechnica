@@ -6,6 +6,8 @@ body {
   line-height: $base-line-height;
   margin: 0;
   background-color: $base-background-color;
+  padding-left: $gutter / 2;
+  padding-right: $gutter / 2;
 }
 
 h1,
@@ -15,6 +17,7 @@ h4,
 h5,
 h6 {
   font-family: $heading-font-family;
+  color: $heading-font-color;
   font-size: $base-font-size;
   line-height: $heading-line-height;
   margin: 0 0 $small-spacing;

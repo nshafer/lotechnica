@@ -1,6 +1,6 @@
 PY?=python
 PELICAN?=pelican
-PELICANOPTS=
+PELICANOPTS=--debug
 
 BASEDIR=$(CURDIR)
 INPUTDIR=$(BASEDIR)/content

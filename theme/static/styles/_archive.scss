@@ -1,0 +1,10 @@
+// ------------------------------------------------------------------------------------------//
+// Archive pages
+#archives, #categories, #authors, #tags {
+  @include pad(1em);
+
+  h2 {
+    border-bottom: $base-border;
+  }
+}
+

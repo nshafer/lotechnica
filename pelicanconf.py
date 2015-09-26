@@ -12,6 +12,7 @@ SITEURL = ''
 PATH = 'content'
 # ARTICLE_PATHS = ['articles']
 STATIC_PATHS = ['images', 'static']
+STATIC_EXCLUDES = ['.sass-cache']
 
 USE_FOLDER_AS_CATEGORY = True
 

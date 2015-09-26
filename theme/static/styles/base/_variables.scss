@@ -1,11 +1,11 @@
 // Typography
-$base-font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-$alt-font-family: "Helvetica", "Arial", sans-serif;
+$base-font-family: "Open Sans", serif;
+$alt-font-family: "Oswald", sans-serif;
 $monospace-font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 $heading-font-family: $alt-font-family;
 
 // Font Sizes
-$base-font-size: 1em;
+$base-font-size: 17px;
 
 // Line height
 $base-line-height: 1.5;
@@ -13,7 +13,7 @@ $heading-line-height: 1.2;
 
 // Other Sizes
 $base-border-radius: 3px;
-$base-spacing: $base-line-height * 1em;
+$base-spacing: $base-line-height * .9em;
 $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
 
@@ -24,7 +24,8 @@ $medium-gray: #999;
 $light-gray: #ddd;
 
 // Font Colors
-$base-font-color: rgb(85, 84, 89);
+$base-font-color: #555;
+$heading-font-color: #333;
 $action-color: #225C44;
 
 // Border

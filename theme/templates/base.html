@@ -41,49 +41,48 @@
         {% endif %}
     {% endblock head %}
 
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/styles/theme.css"/>
     <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/styles/pygments/{{ PYGMENTS_STYLE }}.css"/>
 </head>
 <body>
 
-<header id="main-header">
-    <section>
-        <ul id="main-menu" role="nav">
-            {% for title, link in MENUITEMS %}
-                <li><a href="{{ link }}">{{ title }}</a></li>
+<header id="main-header" class="container">
+    <ul id="main-menu" role="nav">
+        {% for title, link in MENUITEMS %}
+            <li><a href="{{ link }}">{{ title }}</a></li>
+        {% endfor %}
+        {% if DISPLAY_PAGES_ON_MENU %}
+            {% for p in PAGES %}
+                <li{% if p == page %} class="active"{% endif %}>
+                    <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+                </li>
             {% endfor %}
-            {% if DISPLAY_PAGES_ON_MENU %}
-                {% for p in PAGES %}
-                    <li{% if p == page %} class="active"{% endif %}>
-                        <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+        {% else %}
+            {% if DISPLAY_CATEGORIES_ON_MENU %}
+                {% for cat, null in categories %}
+                    <li{% if cat == category %} class="active"{% endif %}>
+                        <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>
                     </li>
                 {% endfor %}
-            {% else %}
-                {% if DISPLAY_CATEGORIES_ON_MENU %}
-                    {% for cat, null in categories %}
-                        <li{% if cat == category %} class="active"{% endif %}>
-                            <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>
-                        </li>
-                    {% endfor %}
-                {% endif %}
             {% endif %}
-            <li><a class="btn" href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">Archives</a></li>
-        </ul>
-        <div id="masthead">
-            <img src="{{ SITEURL }}/theme/images/toaster.png"/>
-            <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
-            <p>{{ SITESUBTITLE }}</p>
-        </div>
-    </section>
+        {% endif %}
+{#        <li><a class="btn" href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">Archives</a></li>#}
+    </ul>
+    <div id="masthead">
+        <img src="{{ SITEURL }}/theme/images/toaster.png"/>
+        <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
+        <p>{{ SITESUBTITLE }}</p>
+    </div>
 </header>
 
-<main id="main-page">
+<main id="main-page" class="container">
 {% block content %}
 {% endblock %}
 </main>
 
-<footer id="main-footer">
-    <section>
+<footer id="main-footer" class="container">
+    <section id="links">
         <section>
             <h3>Pages</h3>
             <ul>
@@ -119,20 +118,27 @@
             </ul>
         </section>
 
-        {% if articles %}
-            {% set copy_date = articles[0].date.strftime('%Y') %}
-        {% else %}
-            {% set copy_date = '' %}
-        {% endif %}
         <address>
-            &copy; {{ copy_date }} Nathan Shafer
-            <p id="license">
-                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-                    <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
-                </a>
-                All work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
-            </p>
+            <h3>Nathan Shafer</h3>
+            <ul>
+                <li><a href="https://www.github.com/nshafer">Github</a></li>
+            </ul>
         </address>
+    </section>
+
+    {% if articles %}
+        {% set copy_date = articles[0].date.strftime('%Y') %}
+    {% else %}
+        {% set copy_date = '' %}
+    {% endif %}
+    <section id="copyright">
+        &copy; {{ copy_date }} Nathan Shafer
+        <p id="license">
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+                <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
+            </a>
+            All work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+        </p>
     </section>
 </footer>
 
