@@ -27,7 +27,7 @@ label {
 }
 
 #{$all-text-inputs},
-select[multiple=multiple] {
+select {
   background-color: $base-background-color;
   border: $base-border;
   border-radius: $base-border-radius;
