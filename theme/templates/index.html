@@ -1,37 +1,92 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="card">
-    {% block content_title %}
-        <h1>All articles</h1>
-    {% endblock %}
-
-    <ol id="post-list">
+    <section id="index">
+        {% block content_title %}
+            <h2>All Articles</h2>
+        {% endblock %}
         {% for article in articles_page.object_list %}
-            <li>
-                <article>
-                    <header>
-                        <h2>
-                            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">
-                                {{ article.title }}
-                            </a>
-                        </h2>
-                    </header>
-                    <footer>
-                        <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
-                        <address>
-                            By
-                            {% for author in article.authors %}
-                                <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
-                            {% endfor %}
-                        </address>
-                    </footer>
-                    {{ article.summary }}
-                </article>
-            </li>
+            <article>
+                <header>
+                    <h2>
+                        <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+                           title="Permalink to {{ article.title|striptags }}">
+                            {{ article.title }}
+                        </a>
+                    </h2>
+                </header>
+                <footer>
+                    <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+                    <address>
+                        By
+                        {% for author in article.authors %}
+                            <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
+                        {% endfor %}
+                    </address>
+                </footer>
+                <p>
+                    {{ article.summary|striptags }}
+                </p>
+                <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+                   title="Permalink to {{ article.title|striptags }}">
+                    Read More
+                </a>
+            </article>
         {% endfor %}
-    </ol>
-    {% if articles_page.has_other_pages() %}
-        {% include 'pagination.html' %}
-    {% endif %}
-</section>
+        {% if articles_page.has_other_pages() %}
+            {% include 'pagination.html' %}
+        {% endif %}
+    </section>
+    <section id="about">
+        <h2>About me</h2>
+
+        <div class="infolist">
+            <span>I am a</span>
+            <ul>
+                <li>software</li>
+                <li>system</li>
+                <li>operation</li>
+                <li>web</li>
+            </ul>
+            <ul>
+                <li>engineer</li>
+                <li>developer</li>
+                <li>designer</li>
+            </ul>
+            <span>with experience in</span>
+            <ul>
+                <li>web</li>
+                <li>backend</li>
+                <li>mobile</li>
+                <li>gaming</li>
+            </ul>
+            <span>using technologies like</span>
+            <ul>
+                <li>GNU/Linux</li>
+                <li>Gideros</li>
+                <li>Django</li>
+                <li>jQuery</li>
+                <li>Phoenix</li>
+            </ul>
+            <span>in languages like</span>
+            <ul>
+                <li>Python</li>
+                <li>Elixir</li>
+                <li>Javascript</li>
+                <li>Perl</li>
+                <li>C/C++/ObjC</li>
+            </ul>
+            <span>I have over 15 years of experience as a</span>
+            <ul>
+                <li>1-man shop</li>
+                <li>code monkey</li>
+                <li>sysadmin</li>
+                <li>project manager</li>
+                <li>datacenter manager</li>
+                <li>web developer</li>
+            </ul>
+            <span>I am a long-time fan of Open Source software, and have contributed where I can, but most of my work
+            has been in the private sector.  This blog is my attempt to contribute more back to the community that I
+            have taken such great advantage of.</span>
+        </div>
+    </section>
 {% endblock content %}

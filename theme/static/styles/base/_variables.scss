@@ -1,6 +1,8 @@
 // Typography
 $base-font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-$heading-font-family: $base-font-family;
+$alt-font-family: "Helvetica", "Arial", sans-serif;
+$monospace-font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+$heading-font-family: $alt-font-family;
 
 // Font Sizes
 $base-font-size: 1em;
@@ -30,7 +32,7 @@ $base-border-color: $light-gray;
 $base-border: 1px solid $base-border-color;
 
 // Background Colors
-$base-background-color: #f9f9f9;
+$base-background-color: #ffffff;
 $secondary-background-color: tint($base-border-color, 75%);
 
 // Cards
@@ -45,3 +47,7 @@ $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $l
 // Animations
 $base-duration: 150ms;
 $base-timing: ease;
+
+// Shadows
+$base-shadow-color: rgba(0, 0, 0, .1);
+$base-shadow: 0 2px 6px 0 $base-shadow-color;

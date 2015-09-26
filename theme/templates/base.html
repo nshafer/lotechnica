@@ -42,61 +42,98 @@
     {% endblock head %}
 
     <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/styles/theme.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/styles/pygments/{{ PYGMENTS_STYLE }}.css"/>
 </head>
 <body>
 
 <header id="main-header">
-    <ul id="main-menu" role="nav">
-        {% for title, link in MENUITEMS %}
-            <li><a href="{{ link }}">{{ title }}</a></li>
-        {% endfor %}
-        {% if DISPLAY_PAGES_ON_MENU %}
-            {% for p in PAGES %}
-                <li{% if p == page %} class="active"{% endif %}><a
-                        href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+    <section>
+        <ul id="main-menu" role="nav">
+            {% for title, link in MENUITEMS %}
+                <li><a href="{{ link }}">{{ title }}</a></li>
             {% endfor %}
-        {% else %}
-            {% if DISPLAY_CATEGORIES_ON_MENU %}
-                {% for cat, null in categories %}
-                    <li{% if cat == category %} class="active"{% endif %}><a
-                            href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+            {% if DISPLAY_PAGES_ON_MENU %}
+                {% for p in PAGES %}
+                    <li{% if p == page %} class="active"{% endif %}>
+                        <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+                    </li>
                 {% endfor %}
+            {% else %}
+                {% if DISPLAY_CATEGORIES_ON_MENU %}
+                    {% for cat, null in categories %}
+                        <li{% if cat == category %} class="active"{% endif %}>
+                            <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
             {% endif %}
-        {% endif %}
-        <li><a class="btn" href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">Archives</a></li>
-    </ul>
-    <div id="masthead">
-        <img src="{{ SITEURL }}/theme/images/toaster.png"/>
-        <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
-        <p>{{ SITESUBTITLE }}</p>
-    </div>
+            <li><a class="btn" href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">Archives</a></li>
+        </ul>
+        <div id="masthead">
+            <img src="{{ SITEURL }}/theme/images/toaster.png"/>
+            <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
+            <p>{{ SITESUBTITLE }}</p>
+        </div>
+    </section>
 </header>
 
-<section class="container">
-    <main id="main-page">
-    {% block content %}
-    {% endblock %}
-    </main>
-    <aside id="sidebar">
-        <h1>About</h1>
-    </aside>
-</section>
+<main id="main-page">
+{% block content %}
+{% endblock %}
+</main>
 
 <footer id="main-footer">
-    {% if articles %}
-        {% set copy_date = articles[0].date.strftime('%Y') %}
-    {% else %}
-        {% set copy_date = '' %}
-    {% endif %}
-    <address>
-        &copy; {{ copy_date }} Nathan Shafer
-        <p>
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-                <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
-            </a>
-            All work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
-        </p>
-    </address>
+    <section>
+        <section>
+            <h3>Pages</h3>
+            <ul>
+                <li><a href="{{ SITEURL }}/">Home</a></li>
+                <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">Archives</a></li>
+                {% for page, null in pages %}
+                    <li>
+                        <a href="{{ SITEURL }}/{{ page.url }}">{{ page }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h3>Categories</h3>
+            <ul>
+                {% for cat, null in categories %}
+                    <li>
+                        <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h3>Tags</h3>
+            <ul>
+                {% for tag, null in tags %}
+                    <li>
+                        <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        {% if articles %}
+            {% set copy_date = articles[0].date.strftime('%Y') %}
+        {% else %}
+            {% set copy_date = '' %}
+        {% endif %}
+        <address>
+            &copy; {{ copy_date }} Nathan Shafer
+            <p id="license">
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+                    <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
+                </a>
+                All work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+            </p>
+        </address>
+    </section>
 </footer>
 
 </body>

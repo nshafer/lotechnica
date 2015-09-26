@@ -10,78 +10,83 @@
 // ------------------------------------------------------------------------------------------//
 // Header
 #main-header {
-  @include outer-container(100%);
   background-color: #fff;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .1);
+  border-bottom: $base-border;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .1);
   margin-bottom: 2em;
   //height: 5em;
 
-  #masthead {
-    padding: 1em 1.5em;
-    overflow: hidden;
-    //white-space: nowrap;
+  section {
+    @include outer-container();
 
-    @include media($medium-screen-up) {
-    }
-
-    @include media($large-screen-up) {
-    }
-
-    img {
-      float: left;
-      height: 50px;
-      width: auto;
-      margin-right: 1em;
-      //display: none;
+    #masthead {
+      padding: 1em 1.5em;
+      overflow: hidden;
+      //white-space: nowrap;
 
       @include media($medium-screen-up) {
-        display: block;
+      }
+
+      @include media($large-screen-up) {
+      }
+
+      img {
+        float: left;
+        height: 50px;
+        width: auto;
+        margin-right: 1em;
+        //display: none;
+
+        @include media($medium-screen-up) {
+          display: block;
+        }
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.5em;
+        font-family: $base-font-family;
+      }
+
+      p {
+        margin: 0;
+        font-size: .75em;
+
+        @include media($medium-screen-up) {
+          display: inline;
+          font-size: 1em;
+        }
       }
     }
 
-    h1 {
+    #main-menu {
+      display: none; // Hide for mobile
+      height: 5em;
       margin: 0;
-      font-size: 1.5em;
-    }
-
-    p {
-      margin: 0;
-      font-size: .75em;
+      padding: 0 1.5em 0 0;
+      list-style: none;
 
       @include media($medium-screen-up) {
-        display: inline;
-        font-size: 1em;
       }
-    }
-  }
 
-  #main-menu {
-    display: none; // Hide for mobile
-    height: 5em;
-    margin: 0;
-    padding: 0 1.5em 0 0;
-    list-style: none;
-
-    @include media($medium-screen-up) {
-    }
-
-    @include media($large-screen-up) {
-      float: right;
-      text-align: right;
-      @include display(flex);
-
-      li {
+      @include media($large-screen-up) {
+        float: right;
+        text-align: right;
         @include display(flex);
         @include flex-flow(row nowrap);
-        @include align-self(center);
-        text-transform: capitalize;
 
-        a {
-          padding: $small-spacing $base-spacing;
-        }
+        li {
+          @include display(flex);
+          @include align-self(center);
+          text-transform: capitalize;
 
-        &.active a {
-          box-shadow: 0 4px 2px -2px rgba(0, 0, 0, .1);
+          a {
+            padding: $small-spacing $base-spacing;
+          }
+
+          &.active a {
+            box-shadow: 0 4px 2px -2px rgba(0, 0, 0, .1);
+          }
         }
       }
     }
@@ -92,30 +97,274 @@
 // Main page
 
 #main-page {
-  @include pad(1em);
+  @include outer-container();
   @include media($large-screen-up) {
-    @include span-columns(8);
-  }
-}
-
-// ------------------------------------------------------------------------------------------//
-// Sidebar
-#sidebar {
-  @include pad(1em);
-  @include media($large-screen-up) {
-    @include span-columns(4);
   }
 }
 
 // ------------------------------------------------------------------------------------------//
 // footer
 #main-footer {
-  background-color: #eeeeee;
+  background-color: #F8F8F8;
   box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, .1);
   margin-top: 2em;
-  @include pad(1em);
+  padding: 2em 0;
+
+  section {
+    @include outer-container();
+
+    section {
+      @include media($small-screen-down) {
+        text-align: center;
+      }
+    }
+
+    section, address {
+      @include pad(1em);
+
+      h3 {
+        margin: 0;
+        padding: 0;
+      }
+
+      ul {
+        text-transform: capitalize;
+      }
+
+      #license {
+        font-size: .75em;
+      }
+
+      @include media($medium-screen-up) {
+        @include span-columns(12/4);
+        &:first-child {
+          //@include shift(1);
+        }
+      }
+      @include media($large-screen-up) {
+        @include span-columns(10/4);
+
+        &:first-child {
+          @include shift(1);
+        }
+      }
+    }
+  }
 }
 
 // ------------------------------------------------------------------------------------------//
 // Index
+#index {
+  @include pad(1em);
+  @include media($large-screen-up) {
+  }
+  @include media($extra-large-screen-up) {
+    @include span-columns(8);
+    @include shift(0);
+  }
 
+  h2 {
+    border-bottom: $base-border;
+    margin: 0;
+  }
+
+  >h2 {
+    //display: none;
+    margin-bottom: 1em;
+    font-size: 1.5em;
+  }
+
+  article {
+    margin-bottom: 2em;
+
+    > a {
+      display: inline-block;
+      background-color: $medium-gray;
+      color: #fff;
+      padding: .2em .5em;
+      border-radius: $base-border-radius;
+      font-size: .8em;
+      font-weight: bold;
+      font-family: $alt-font-family;
+
+      &:active,
+      &:focus,
+      &:hover {
+        background-color: shade($medium-gray, 25%);
+      }
+    }
+
+    footer {
+      @include clearfix();
+      margin-bottom: .5em;
+
+      time {
+        float: left;
+        margin-right: 1em;
+        font-size: .75em;
+        font-weight: bold;
+      }
+      address {
+        float: left;
+        font-size: .75em;
+      }
+    }
+  }
+}
+
+#about {
+  @include pad(1em);
+  @include media($large-screen-up) {
+  }
+  @include media($extra-large-screen-up) {
+    @include span-columns(4);
+  }
+
+  h2 {
+    border-bottom: $base-border;
+  }
+
+  .infolist {
+    //display: flex;
+    //flex-flow: row wrap;
+    vertical-align: top;
+
+    span {
+      padding: .25em;
+    }
+
+    span, ul {
+      vertical-align: top;
+      //margin-right: .5em;
+      //display: flex;
+      //align-self: flex-start;
+      //flex-flow: column nowrap;
+      //flex-grow: 1;
+    }
+
+    ul {
+      position: relative;
+      top: -.15em;
+      display: inline-block;
+      border: $base-border;
+      border-radius: $base-border-radius;
+      //flex-shrink: 0;
+      margin-bottom: 1em;
+      box-shadow: $base-shadow;
+
+      li {
+        //@include display(flex);
+        padding: 0 .25em;
+
+        &:first-child {
+          background-color: $action-color;
+          color: #FFF;
+          border: 1px solid darken($base-border-color, 50%);
+          border-radius: $base-border-radius;
+        }
+      }
+    }
+
+  }
+}
+
+// ------------------------------------------------------------------------------------------//
+// Archive pages
+#archives, #categories, #authors, #tags {
+  @include pad(1em);
+
+  h2 {
+    border-bottom: $base-border;
+  }
+}
+
+// ------------------------------------------------------------------------------------------//
+// Article
+#article {
+  @include pad(1em);
+  max-width: 48em;
+  margin-left: auto;
+  margin-right: auto;
+
+  h2 {
+    border-bottom: $base-border;
+    margin: 0;
+    font-size: 1.8em;
+  }
+
+  footer {
+    @include clearfix();
+    margin-bottom: .5em;
+
+    time {
+      float: left;
+      margin-right: 1em;
+      font-size: .75em;
+      font-weight: bold;
+    }
+    address {
+      float: right;
+      font-size: .75em;
+    }
+  }
+
+  #article-content {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: $base-font-family;
+      margin: 0 0 $small-spacing;
+    }
+
+    a {
+      border-bottom: 1px dotted;
+
+      &:active,
+      &:focus,
+      &:hover {
+        border-bottom: 1px solid;
+      }
+    }
+
+    ul {
+      list-style-type: disc;
+      margin-bottom: $small-spacing;
+      padding-left: $base-spacing;
+    }
+
+    ol {
+      list-style-type: decimal;
+      margin-bottom: $small-spacing;
+      padding-left: $base-spacing;
+    }
+
+    code {
+      padding: 2px 4px;
+      font-size: 90%;
+      color: #c7254e;
+      background-color: #f9f2f4;
+      border-radius: 4px;
+    }
+
+    pre {
+      display: block;
+      padding: 10px;
+      margin: 0 0 10.5px;
+      font-size: 14px;
+      line-height: 1.42857143;
+      word-break: break-all;
+      word-wrap: break-word;
+      color: #7b8a8b;
+      background-color: #f8f8f8;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+    }
+
+    code, kbd, pre, samp {
+      font-family: $monospace-font-family;
+    }
+  }
+}
