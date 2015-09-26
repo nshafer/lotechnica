@@ -13,6 +13,7 @@ PATH = 'content'
 # ARTICLE_PATHS = ['articles']
 STATIC_PATHS = ['images', 'static']
 STATIC_EXCLUDES = ['.sass-cache']
+AUTHOR_SAVE_AS = ''
 
 USE_FOLDER_AS_CATEGORY = True
 
