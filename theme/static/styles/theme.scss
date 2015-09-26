@@ -23,7 +23,6 @@
       width: auto;
       margin-top: .25em;
       margin-right: 1em;
-      //display: none;
 
       @include media($medium-screen-up) {
         display: block;
@@ -47,36 +46,27 @@
   }
 
   #main-menu {
-    display: none; // Hide for mobile
-    //height: 5em;
     margin: 0;
-    //padding: 0 1.5em 0 0;
     list-style: none;
 
-    @include media($medium-screen-up) {
+    @include media($large-screen-down) {
+      display: none; // Hide for mobile
     }
 
     @include media($large-screen-up) {
       float: right;
       text-align: right;
-      display: block;
-      //@include display(flex);
-      //@include flex-flow(row nowrap);
 
       li {
-        //@include display(flex);
-        //@include align-self(center);
         display: inline-block;
         text-transform: capitalize;
 
         a {
           display: inline-block;
-          //padding: $small-spacing $base-spacing;
           padding: 1.75em $base-spacing;
         }
 
         &.active a {
-          //box-shadow: 0 4px 2px -2px rgba(0, 0, 0, .1);
           border-bottom: 1px solid $medium-gray;
         }
       }
@@ -93,12 +83,8 @@
 // ------------------------------------------------------------------------------------------//
 // footer
 #main-footer {
-  //background-color: #F8F8F8;
-  //box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, .1);
   border-top: $base-border;
   margin-top: 2em;
-
-  //padding: 2em 0;
 
   #links {
     @include row();
@@ -110,20 +96,8 @@
         text-align: center;
       }
 
-      h3 {
-        //margin: 0;
-        //padding: 0;
-      }
-
-      ul {
-        text-transform: capitalize;
-      }
-
       @include media($medium-screen-up) {
         @include span-columns(12/4);
-        &:first-child {
-          //@include shift(1);
-        }
       }
     }
   }

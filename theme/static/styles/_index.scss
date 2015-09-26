@@ -2,36 +2,12 @@
 // Index
 #index {
   @include media($large-screen-up) {
-  }
-  @include media($large-screen-up) {
     @include span-columns(8);
     border-right: $base-border;
   }
 
-  h2 {
-    //border-bottom: $base-border;
-    //margin: 0;
-  }
-
   article {
     margin-bottom: 2em;
-
-    > a {
-      display: inline-block;
-      background-color: $medium-gray;
-      color: #fff;
-      padding: .2em .5em;
-      border-radius: $base-border-radius;
-      font-size: .8em;
-      font-weight: bold;
-      font-family: $alt-font-family;
-
-      &:active,
-      &:focus,
-      &:hover {
-        background-color: shade($medium-gray, 25%);
-      }
-    }
 
     footer {
       color: $medium-gray;
@@ -50,14 +26,7 @@
 
 #about {
   @include media($large-screen-up) {
-  }
-  @include media($large-screen-up) {
     @include span-columns(4);
-  }
-
-
-  h2 {
-    //border-bottom: $base-border;
   }
 
   .infolist {
@@ -68,47 +37,5 @@
       padding: 0;
       display: inline-block;
     }
-
-
-    ////display: flex;
-    ////flex-flow: row wrap;
-    //vertical-align: top;
-    //
-    //span {
-    //  padding: .25em;
-    //}
-    //
-    //span, ul {
-    //  vertical-align: top;
-    //  //margin-right: .5em;
-    //  //display: flex;
-    //  //align-self: flex-start;
-    //  //flex-flow: column nowrap;
-    //  //flex-grow: 1;
-    //}
-    //
-    //ul {
-    //  position: relative;
-    //  top: -.15em;
-    //  display: inline-block;
-    //  border: $base-border;
-    //  border-radius: $base-border-radius;
-    //  //flex-shrink: 0;
-    //  margin-bottom: 1em;
-    //  box-shadow: $base-shadow;
-    //
-    //  li {
-    //    //@include display(flex);
-    //    padding: 0 .25em;
-    //
-    //    &:first-child {
-    //      background-color: $action-color;
-    //      color: #FFF;
-    //      border: 1px solid darken($base-border-color, 50%);
-    //      border-radius: $base-border-radius;
-    //    }
-    //  }
-    //}
-
   }
 }
