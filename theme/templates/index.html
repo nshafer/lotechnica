@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
     <section id="index">
+        {% block content_title %}
+        {% endblock %}
         {% for article in articles_page.object_list %}
             <article>
                 <header>
@@ -49,7 +51,7 @@
             </select>
             <span>with experience in</span>
             <select>
-                <option>web</option>
+                <option>web development</option>
                 <option>backend</option>
                 <option>mobile</option>
                 <option>games</option>
@@ -60,6 +62,8 @@
                 <option>Phoenix</option>
                 <option>Gideros</option>
                 <option>Django</option>
+                <option>Android</option>
+                <option>iOS</option>
             </select>
             <span>and languages like</span>
             <select>
@@ -76,7 +80,7 @@
             </select>
             <span>. I have over 15 years of experience as a</span>
             <select>
-                <option>web developer</option>
+                <option>developer</option>
                 <option>1-man shop</option>
                 <option>code monkey</option>
                 <option>sysadmin</option>
