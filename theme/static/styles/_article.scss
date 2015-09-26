@@ -24,7 +24,13 @@
     }
   }
 
+  #comments {
+    border-top: $base-border;
+    padding-top: 1em;
+  }
+
   #article-content {
+    @include clearfix();
     font-size: 17px;
     line-height: 1.7em;
 

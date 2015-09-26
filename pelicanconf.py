@@ -4,10 +4,8 @@ from __future__ import unicode_literals
 
 AUTHOR = u'Nathan Shafer'
 SITENAME = u'Lotechnica'
-# SITESUBTITLE = u"By Nathan Shafer"
 SITESUBTITLE = u"Technical writings by Nathan Shafer"
-SITEURL = ''
-# ABOUT_ME = "Hacker making stuff"
+SITEURL = 'http://blog.lotech.org'
 
 PATH = 'content'
 # ARTICLE_PATHS = ['articles']
@@ -26,23 +24,24 @@ THEME = "theme"
 PYGMENTS_STYLE = "native"
 DISPLAY_PAGES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_MENU = True
+USE_OPEN_GRAPH = True
 
 # pelican-bootstrap3 theme settings
-BOOTSTRAP_THEME = "flatly"
-CUSTOM_CSS = "static/custom.css"
-GITHUB_USER = "nshafer"
-GITHUB_REPO_COUNT = 5
-GITHUB_SKIP_FORK = True
-# GITHUB_SHOW_USER_LINK = True
-SHARIFF = True
-SHARIFF_LANG = "en"
-SHOW_ARTICLE_AUTHOR = False
-SHOW_ARTICLE_CATEGORY = True
-SHOW_DATE_MODIFIED = True
-DISPLAY_TAGS_ON_SIDEBAR = True
-DISPLAY_TAGS_INLINE = True
-DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
-CC_LICENSE = "CC-BY"
+# BOOTSTRAP_THEME = "flatly"
+# CUSTOM_CSS = "static/custom.css"
+# GITHUB_USER = "nshafer"
+# GITHUB_REPO_COUNT = 5
+# GITHUB_SKIP_FORK = True
+# # GITHUB_SHOW_USER_LINK = True
+# SHARIFF = True
+# SHARIFF_LANG = "en"
+# SHOW_ARTICLE_AUTHOR = False
+# SHOW_ARTICLE_CATEGORY = True
+# SHOW_DATE_MODIFIED = True
+# DISPLAY_TAGS_ON_SIDEBAR = True
+# DISPLAY_TAGS_INLINE = True
+# DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
+# CC_LICENSE = "CC-BY"
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None

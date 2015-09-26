@@ -33,3 +33,47 @@
     }
   }
 }
+
+$facebook-color: #3b5998;
+a.btn-facebook {
+  background: $facebook-color;
+
+  &:hover,
+  &:focus {
+    background-color: shade($facebook-color, 20%);
+    color: #fff;
+  }
+}
+
+$twitter-color: #00acee;
+a.btn-twitter {
+  background: $twitter-color;
+
+  &:hover,
+  &:focus {
+    background-color: shade($twitter-color, 20%);
+    color: #fff;
+  }
+}
+
+$google-plus-color: #e93f2e;
+a.btn-google-plus {
+  background: $google-plus-color;
+
+  &:hover,
+  &:focus {
+    background-color: shade($google-plus-color, 20%);
+    color: #fff;
+  }
+}
+
+$reddit-color: #ED4523;
+a.btn-reddit {
+  background: $reddit-color;
+
+  &:hover,
+  &:focus {
+    background-color: shade($reddit-color, 20%);
+    color: #fff;
+  }
+}

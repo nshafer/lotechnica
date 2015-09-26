@@ -203,5 +203,3 @@ This initializes our transform variables, then does a bit of magic of modifying 
 In the end, the result is that to the user, all we've done is added `Sprite:setAnchorPoint()` and `Sprite:getAnchorPoint()`, and everything just works.  A [sample project is available](https://github.com/nshafer/AnchorSprite) to see how it can be implemented and to show the results.  To use it, simply include [AnchorSprite.lua](https://github.com/nshafer/AnchorSprite/blob/master/AnchorSprite.lua) and [Matrix.lua](https://github.com/nshafer/AnchorSprite/blob/master/Matrix.lua) into your project.
 
 Of course, this is hopefully just a stopgap solution until Gideros builds this functionality in.  Until then, this is one way to get around the limitation.  Let me know if you find it useful.
-
-<div style="clear: both"/>
