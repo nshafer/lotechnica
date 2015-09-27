@@ -1,0 +1,3 @@
+Make tables min-width: 100%
+footer responsive buttons for mobile
+Write article on Bourbon/neat/bitters/refills.
