@@ -12,6 +12,15 @@
 
       @include media($medium-screen-down) {
         text-align: center;
+
+        ul > li > a {
+          display: block;
+          padding: $very-small-spacing;
+          width: 100%;
+          border: $base-border;
+          margin-bottom: $very-small-spacing;
+          border-radius: $base-border-radius;
+        }
       }
 
       @include media($medium-screen-up) {

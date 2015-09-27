@@ -34,6 +34,14 @@
       li {
         display: inline-block;
         margin-bottom: 1em;
+
+        @include media($medium-screen-down) {
+          display: block;
+
+          a {
+            display: block;
+          }
+        }
       }
     }
   }
