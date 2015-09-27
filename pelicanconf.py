@@ -45,7 +45,7 @@ SOCIAL = (
     ('Google Plus', 'https://www.google.com/+NathanShafer'),
 )
 
-DEFAULT_PAGINATION = 2
+DEFAULT_PAGINATION = 40
 
 DEFAULT_METADATA = {
     'status': "draft",
