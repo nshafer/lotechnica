@@ -24,6 +24,20 @@
     }
   }
 
+  #share-buttons {
+    margin: 2em 0 1em;
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        display: inline-block;
+        margin-bottom: 1em;
+      }
+    }
+  }
+
   #comments {
     border-top: $base-border;
     padding-top: 1em;

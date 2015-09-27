@@ -1,0 +1,26 @@
+// ------------------------------------------------------------------------------------------//
+// footer
+#main-footer {
+  border-top: $base-border;
+  margin-top: 2em;
+
+  #links {
+    @include row();
+    section, address {
+      font-style: normal;
+      margin: 1.5em 0;
+
+      @include media($medium-screen-down) {
+        text-align: center;
+      }
+
+      @include media($medium-screen-up) {
+        @include span-columns(12/4);
+      }
+    }
+  }
+
+  #copyright {
+    font-size: .75em;
+  }
+}
