@@ -96,8 +96,8 @@
 
   table {
     @include media($large-screen-down) {
-      width: auto;
       display: block;
+      width: auto;
       overflow-x: auto;
       margin: $small-spacing auto;
     }
