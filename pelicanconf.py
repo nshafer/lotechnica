@@ -8,7 +8,6 @@ SITESUBTITLE = u"Technical writings by Nathan Shafer"
 SITEURL = 'http://blog.lotech.org'
 
 PATH = 'content'
-# ARTICLE_PATHS = ['articles']
 STATIC_PATHS = ['images', 'static']
 STATIC_EXCLUDES = ['.sass-cache']
 AUTHOR_SAVE_AS = ''
@@ -25,23 +24,6 @@ PYGMENTS_STYLE = "native"
 DISPLAY_PAGES_ON_MENU = False
 DISPLAY_CATEGORIES_ON_MENU = True
 USE_OPEN_GRAPH = True
-
-# pelican-bootstrap3 theme settings
-# BOOTSTRAP_THEME = "flatly"
-# CUSTOM_CSS = "static/custom.css"
-# GITHUB_USER = "nshafer"
-# GITHUB_REPO_COUNT = 5
-# GITHUB_SKIP_FORK = True
-# # GITHUB_SHOW_USER_LINK = True
-# SHARIFF = True
-# SHARIFF_LANG = "en"
-# SHOW_ARTICLE_AUTHOR = False
-# SHOW_ARTICLE_CATEGORY = True
-# SHOW_DATE_MODIFIED = True
-# DISPLAY_TAGS_ON_SIDEBAR = True
-# DISPLAY_TAGS_INLINE = True
-# DISPLAY_RECENT_POSTS_ON_SIDEBAR = True
-# CC_LICENSE = "CC-BY"
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -63,7 +45,7 @@ SOCIAL = (
     ('Google Plus', 'https://www.google.com/+NathanShafer'),
 )
 
-DEFAULT_PAGINATION = 40
+DEFAULT_PAGINATION = 2
 
 DEFAULT_METADATA = {
     'status': "draft",
@@ -72,13 +54,6 @@ DEFAULT_METADATA = {
 # Plugins
 PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = ["render_math"]
-
-# ASSET_CONFIG = (
-# 	('cleancss_bin', "theme/node_modules/clean-css/bin/cleancss"),
-# 	# ('sass_style', "compressed"),
-# 	('sass_debug_info', True),
-# )
-# # ASSET_DEBUG = True
 
 # MathJax
 MATH_JAX = {
