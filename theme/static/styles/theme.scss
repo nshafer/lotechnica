@@ -3,6 +3,12 @@
 @import "neat/neat";
 @import "base/base";
 
+@import "index";
+@import "archive";
+@import "article";
+@import "page";
+@import "markdown";
+
 .container {
   @include outer-container();
 }
@@ -120,8 +126,4 @@
     font-size: .75em;
   }
 }
-
-@import "index";
-@import "archive";
-@import "article";
 

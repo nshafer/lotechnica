@@ -1,0 +1,105 @@
+.markdown {
+  .highlight {
+    @import "pygments/native";
+  }
+
+  @include clearfix();
+  font-size: 17px;
+  line-height: 1.7em;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $base-font-family;
+    margin: $base-spacing 0 $small-spacing;
+  }
+
+  a {
+    border-bottom: 1px dotted;
+
+    &:active,
+    &:focus,
+    &:hover {
+      border-bottom: 1px solid;
+    }
+  }
+
+  sup a {
+    border-bottom: none;
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-bottom: $small-spacing;
+    padding-left: $base-spacing;
+  }
+
+  ol {
+    list-style-type: decimal;
+    margin-bottom: $small-spacing;
+    padding-left: $base-spacing;
+  }
+
+  code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #895C12;
+    background-color: #F9F2EB;
+    border-radius: 4px;
+  }
+
+  blockquote {
+    background-color: shade($base-background-color, 5%);
+    padding: 10px;
+    margin: 0 0 10.5px;
+    word-break: break-all;
+    word-wrap: break-word;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  pre {
+    display: block;
+    padding: 10px;
+    margin: 0 0 10.5px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    word-break: break-all;
+    word-wrap: break-word;
+    color: #d0d0d0;
+    background-color: #202020;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+  }
+
+  .highlight pre {
+    word-break: normal;
+    word-wrap: normal;
+    overflow: auto;
+  }
+
+  code, kbd, pre, samp {
+    font-family: $monospace-font-family;
+  }
+
+  img {
+    display: block;
+    margin: $base-spacing auto;
+  }
+
+  table {
+    @include media($large-screen-down) {
+      width: auto;
+      display: block;
+      overflow-x: auto;
+      margin: $small-spacing auto;
+    }
+  }
+}

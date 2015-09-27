@@ -1,15 +1,21 @@
 {% extends "base.html" %}
 {% block title %}{{ page.title }}{%endblock%}
 {% block content %}
-    <h1>{{ page.title }}</h1>
-    {% import 'translations.html' as translations with context %}
-    {{ translations.translations_for(page) }}
+    <section id="page">
+        <header>
+            <h1>{{ page.title }}</h1>
+            {% import 'translations.html' as translations with context %}
+            {{ translations.translations_for(page) }}
+        </header>
 
-    {{ page.content }}
+        <section id="page-content" class="markdown">
+            {{ page.content }}
+        </section>
 
-	{% if page.modified %}
-		<p>
-		Last updated: {{ page.locale_modified }}
-		</p>
-	{% endif %}
+        {% if page.modified %}
+            <p class="modified">
+            This page last updated: {{ page.locale_modified }}
+            </p>
+        {% endif %}
+    </section>
 {% endblock %}
