@@ -28,20 +28,25 @@
     margin: 2em 0 1em;
 
     ul {
+      @include display(flex);
+      @include flex-flow(row wrap);
       list-style: none;
       padding: 0;
+      margin: 0 -.5em;
 
       li {
-        display: inline-block;
-        margin-bottom: 1em;
+        @include flex(1 1 auto);
+        margin: 0 .5em .5em;
 
-        @include media($medium-screen-down) {
+        a {
           display: block;
-
-          a {
-            display: block;
-          }
+          width: 100%;
+          text-align: center;
         }
+
+      }
+      @include media($medium-screen-down) {
+        display: block;
       }
     }
   }
