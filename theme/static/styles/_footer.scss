@@ -1,6 +1,7 @@
 // ------------------------------------------------------------------------------------------//
 // footer
 #main-footer {
+  @include outer-container;
   border-top: $base-border;
   margin-top: 2em;
 

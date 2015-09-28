@@ -11,8 +11,12 @@
 @import "page";
 @import "markdown";
 
-.container {
-  @include outer-container();
+#main-page {
+  @include outer-container;
+
+  #content {
+    @include row;
+  }
 }
 
 

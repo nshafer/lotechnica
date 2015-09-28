@@ -87,7 +87,7 @@
 </head>
 <body>
 
-<header id="main-header" class="container">
+<header id="main-header">
     <ul id="main-menu" role="nav">
         {% for title, link in MENUITEMS %}
             <li><a href="{{ link }}">{{ title }}</a></li>
@@ -116,12 +116,12 @@
     </div>
 </header>
 
-<main id="main-page" class="container">
+<section id="main-page">
 {% block content %}
 {% endblock %}
-</main>
+</section>
 
-<footer id="main-footer" class="container">
+<footer id="main-footer">
     <section id="links">
         <section>
             <h3>Pages</h3>

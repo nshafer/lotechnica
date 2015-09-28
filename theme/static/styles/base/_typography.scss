@@ -21,6 +21,10 @@ h6 {
   font-size: $base-font-size;
   line-height: $heading-line-height;
   margin: 0 0 $small-spacing;
+
+  a {
+    color: inherit;
+  }
 }
 
 h1 {

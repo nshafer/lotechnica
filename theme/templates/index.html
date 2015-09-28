@@ -8,13 +8,18 @@
                 <header>
                     <h2>
                         <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
-                           title="Permalink to {{ article.title|striptags }}">
+                           title="{{ article.title|striptags }}">
                             {{ article.title }}
                         </a>
                     </h2>
                 </header>
                 <p>
                     {{ article.summary|striptags }}
+                    <a class="more" href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+                       title="{{ article.title|striptags }}">
+                        Read more
+                    </a>
+
                 </p>
                 <footer>
                     <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
