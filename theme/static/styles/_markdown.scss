@@ -49,6 +49,11 @@
     color: #895C12;
     background-color: #F9F2EB;
     border-radius: 4px;
+    //white-space: nowrap;
+    word-wrap: break-word;
+    //word-break: break-all;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
   }
 
   blockquote {

@@ -46,7 +46,7 @@ Semantic markup is awesome.  This is what attracted me to Bourbon Neat in the fi
 </footer>
 ```
 
-The result is very clean and readable, and does not contain deep nesting of `.row` and `.col-xx-xx` classes.
+The result is very clean and readable, and does not contain deep nesting of responsive `.row` and `.col-xx-xx` classes.
 
 ![3D view of site hierarchy]({filename}/images/notes-on-bourbon/3d-depth2.jpg "Flat hierarchy")
 :   Page heirarchy remains pretty flat
