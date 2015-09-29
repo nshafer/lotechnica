@@ -1,28 +1,72 @@
 // ------------------------------------------------------------------------------------------//
 // Article
+#article-header {
+  @include outer-container;
+  margin-top: 2em;
+  margin-bottom: 1em;
+
+  #title {
+    max-width: 48rem;
+    margin: 0 auto;
+
+    h2 {
+      font-size: 1.8em;
+      margin: 0;
+    }
+
+    footer {
+      color: $medium-gray;
+
+      time {
+        margin-right: 1em;
+        font-size: .75em;
+        font-weight: bold;
+      }
+      address {
+        font-size: .75em;
+      }
+    }
+  }
+
+
+  &.jumbo {
+    max-width: none;
+    position: relative;
+    min-height: 70vh;
+    padding-top: 45vh;
+    padding-bottom: 1em;
+    margin-top: 0;
+    margin-left: $gutter / 2 * -1;
+    margin-right: $gutter / 2 * -1;
+
+    #jumbo-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: -1
+    }
+
+    #title {
+      //display: table-cell;
+      //vertical-align: bottom;
+
+      h2 {
+        text-shadow: 1px 1px 3px rgba(#fff, .7);
+      }
+    }
+  }
+}
+
 #article {
-  max-width: 48em;
+  max-width: 48rem;
   margin-left: auto;
   margin-right: auto;
 
-  header > h2 {
-    margin: 0;
-    font-size: 1.8em;
-  }
-
-  footer {
-    color: $medium-gray;
-    margin-bottom: 1em;
-
-    time {
-      margin-right: 1em;
-      font-size: .75em;
-      font-weight: bold;
-    }
-    address {
-      font-size: .75em;
-    }
-  }
 
   #share-buttons {
     margin: 2em 0 1em;

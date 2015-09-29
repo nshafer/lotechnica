@@ -1,116 +1,125 @@
 {% extends "base.html" %}
 {% block content %}
     <section id="index">
-        {% block content_title %}
-        {% endblock %}
-        {% for article in articles_page.object_list %}
-            <article>
-                <header>
-                    <h2>
-                        <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
-                           title="{{ article.title|striptags }}">
-                            {{ article.title }}
+        <section id="articles">
+            {% block content_title %}
+            {% endblock %}
+            {% for article in articles_page.object_list %}
+                <article>
+                    <header>
+                        <h2>
+                            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+                               title="{{ article.title|striptags }}">
+                                {{ article.title }}
+                            </a>
+                        </h2>
+                    </header>
+                    {% if article.small_image %}
+                        <a class="article-image-link" href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+                           title="{{ article.title|striptags }}"
+                           style="background-image: url({{ SITEURL }}/{{ article.small_image }})">
+                            {{ article.title|striptags }}
                         </a>
-                    </h2>
-                </header>
-                <p>
-                    {{ article.summary|striptags }}
-                    <a class="more" href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
-                       title="{{ article.title|striptags }}">
-                        Read more
-                    </a>
+                    {% endif %}
+                    <p>
+                        {{ article.summary|striptags }}
+                        <a class="more" href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+                           title="{{ article.title|striptags }}">
+                            Read more
+                        </a>
 
-                </p>
-                <footer>
-                    <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
-                    {#                    <address>#}
-                    {#                        By#}
-                    {#                        {% for author in article.authors %}#}
-                    {#                            <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>#}
-                    {#                        {% endfor %}#}
-                    {#                    </address>#}
-                </footer>
-            </article>
-        {% endfor %}
-        {% if articles_page.has_other_pages() %}
-            {% include 'pagination.html' %}
-        {% endif %}
+                    </p>
+                    <footer>
+                        <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+                        {#                    <address>#}
+                        {#                        By#}
+                        {#                        {% for author in article.authors %}#}
+                        {#                            <a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>#}
+                        {#                        {% endfor %}#}
+                        {#                    </address>#}
+                    </footer>
+                </article>
+            {% endfor %}
+            {% if articles_page.has_other_pages() %}
+                {% include 'pagination.html' %}
+            {% endif %}
+        </section>
+
+        <aside id="about">
+            <h2>About me</h2>
+
+            <div class="infolist">
+                <span>I am a</span>
+                <select>
+                    <option>software</option>
+                    <option>system</option>
+                    <option>operation</option>
+                    <option>web</option>
+                </select>
+                <select>
+                    <option>engineer</option>
+                    <option>developer</option>
+                    <option>designer</option>
+                    <option>hacker</option>
+                </select>
+                <span>with experience in</span>
+                <select>
+                    <option>web development</option>
+                    <option>backend</option>
+                    <option>mobile</option>
+                    <option>games</option>
+                    <option>video</option>
+                </select>
+                <span>using technologies like</span>
+                <select>
+                    <option>Phoenix</option>
+                    <option>Gideros</option>
+                    <option>Django</option>
+                    <option>Android</option>
+                    <option>iOS</option>
+                </select>
+                <span>and languages like</span>
+                <select>
+                    <option>Elixir</option>
+                    <option>Python</option>
+                    <option>JS/ES6</option>
+                    <option>C</option>
+                    <option>Lua</option>
+                    <option>ObjC</option>
+                    <option>Java</option>
+                    <option>Bash</option>
+                    <option>Perl</option>
+                    <option>PHP</option>
+                </select>
+                <span>. I have over 15 years of experience as a</span>
+                <select>
+                    <option>developer</option>
+                    <option>1-man shop</option>
+                    <option>code monkey</option>
+                    <option>sysadmin</option>
+                    <option>project manager</option>
+                    <option>datacenter manager</option>
+                </select>
+                <span>and am a long-time fan of Open Source software such as</span>
+                <select>
+                    <option>GNU/Linux</option>
+                    <option>Apache Server</option>
+                    <option>NGINX</option>
+                    <option>jQuery</option>
+                    <option>GIMP</option>
+                    <option>Inkscape</option>
+                    <option>Blender</option>
+                    <option>git</option>
+                    <option>Sass</option>
+                    <option>Bootstrap</option>
+                    <option>XFCE</option>
+                    <option>Chromium</option>
+                    <option>Debian</option>
+                </select>
+                <span>.  I have contributed where I can, but most of my work
+                has been in the private sector, so this blog is my attempt to contribute more back to the community that I
+                have taken such great advantage of.</span>
+            </div>
+        </aside>
     </section>
-
-    <aside id="about">
-        <h2>About me</h2>
-
-        <div class="infolist">
-            <span>I am a</span>
-            <select>
-                <option>software</option>
-                <option>system</option>
-                <option>operation</option>
-                <option>web</option>
-            </select>
-            <select>
-                <option>engineer</option>
-                <option>developer</option>
-                <option>designer</option>
-                <option>hacker</option>
-            </select>
-            <span>with experience in</span>
-            <select>
-                <option>web development</option>
-                <option>backend</option>
-                <option>mobile</option>
-                <option>games</option>
-                <option>video</option>
-            </select>
-            <span>using technologies like</span>
-            <select>
-                <option>Phoenix</option>
-                <option>Gideros</option>
-                <option>Django</option>
-                <option>Android</option>
-                <option>iOS</option>
-            </select>
-            <span>and languages like</span>
-            <select>
-                <option>Elixir</option>
-                <option>Python</option>
-                <option>JS/ES6</option>
-                <option>C</option>
-                <option>Lua</option>
-                <option>ObjC</option>
-                <option>Java</option>
-                <option>Bash</option>
-                <option>Perl</option>
-                <option>PHP</option>
-            </select>
-            <span>. I have over 15 years of experience as a</span>
-            <select>
-                <option>developer</option>
-                <option>1-man shop</option>
-                <option>code monkey</option>
-                <option>sysadmin</option>
-                <option>project manager</option>
-                <option>datacenter manager</option>
-            </select>
-            <span>and am a long-time fan of Open Source software such as</span>
-            <select>
-                <option>GNU/Linux</option>
-                <option>Apache Server</option>
-                <option>NGINX</option>
-                <option>jQuery</option>
-                <option>GIMP</option>
-                <option>Inkscape</option>
-                <option>Blender</option>
-                <option>git</option>
-                <option>Sass</option>
-                <option>Bootstrap</option>
-                <option>XFCE</option>
-                <option>Chromium</option>
-                <option>Debian</option>
-            </select>
-            <span>.  I have contributed where I can, but most of my work
-            has been in the private sector, so this blog is my attempt to contribute more back to the community that I
-            have taken such great advantage of.</span>
-        </div>
-    </aside>
 {% endblock content %}

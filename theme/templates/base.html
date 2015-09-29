@@ -85,7 +85,7 @@
     <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/styles/theme.css"/>
 {#    <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/styles/pygments/{{ PYGMENTS_STYLE }}.css"/>#}
 </head>
-<body>
+<body {% block body_tags %}{% endblock %}>
 
 <header id="main-header">
     <ul id="main-menu" role="nav">
@@ -110,16 +110,14 @@
 {#        <li><a class="btn" href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">Archives</a></li>#}
     </ul>
     <section id="masthead">
-        <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/toaster.jpg"/>
+        <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/toaster.png"/>
         <h1><a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
         <p>{{ SITESUBTITLE }}</p>
     </section>
 </header>
 
-<section id="main-page">
 {% block content %}
 {% endblock %}
-</section>
 
 <footer id="main-footer">
     <section id="links">

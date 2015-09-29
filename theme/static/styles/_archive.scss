@@ -1,5 +1,7 @@
 // ------------------------------------------------------------------------------------------//
 // Archive pages
 #archives, #categories, #authors, #tags {
+  @include outer-container;
+  margin-top: 2em;
 }
 

@@ -1,63 +1,80 @@
 // ------------------------------------------------------------------------------------------//
 // Index
 #index {
-  @include media($large-screen-up) {
-    @include span-columns(8);
-    border-right: $base-border;
-  }
+  @include outer-container;
+  margin-top: 2em;
 
-  >h1:first-child {
-    margin-bottom: 1.5em;
-  }
-
-  article {
-    margin-bottom: 2em;
-
-    .more {
-      display: inline-block;
-      padding: .1em .4em;
-      font-size: .8em;
-      background-color: #E4EEE5;
-      //color: $dark-gray;
-      border-radius: $base-border-radius;
-      //color: $medium-gray;
-      //text-transform: uppercase;
-      transition: background-color $base-duration $base-timing;
-
-      &:active,
-      &:focus,
-      &:hover {
-        background-color: shade(#E4EEE5, 5%);
-      }
+  #articles {
+    @include media($large-screen-up) {
+      @include span-columns(8);
+      border-right: $base-border;
+      padding-right: $base-spacing;
     }
 
-    footer {
-      color: $medium-gray;
+    > h1:first-child {
+      margin-bottom: 1.5em;
+    }
 
-      time {
-        margin-right: 1em;
-        font-size: .75em;
-        font-weight: bold;
+    article {
+      margin-bottom: 2em;
+
+      .article-image-link {
+        @include hide-text;
+        display: block;
+        height: 200px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-bottom: $base-spacing;
+
       }
-      address {
-        font-size: .75em;
+
+      .more {
+        display: inline-block;
+        padding: .1em .4em;
+        font-size: .8em;
+        background-color: #E4EEE5;
+        //color: $dark-gray;
+        border-radius: $base-border-radius;
+        //color: $medium-gray;
+        //text-transform: uppercase;
+        transition: background-color $base-duration $base-timing;
+
+        &:active,
+        &:focus,
+        &:hover {
+          background-color: shade(#E4EEE5, 5%);
+        }
+      }
+
+      footer {
+        color: $medium-gray;
+
+        time {
+          margin-right: 1em;
+          font-size: .75em;
+          font-weight: bold;
+        }
+        address {
+          font-size: .75em;
+        }
       }
     }
   }
-}
 
-#about {
-  @include media($large-screen-up) {
-    @include span-columns(4);
-  }
+  #about {
+    @include media($large-screen-up) {
+      @include span-columns(4);
+    }
 
-  .infolist {
-    line-height: $base-line-height * 1.5;
+    .infolist {
+      line-height: $base-line-height * 1.5;
 
-    select {
-      margin: 0;
-      padding: 0;
-      display: inline-block;
+      select {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+      }
     }
   }
 }

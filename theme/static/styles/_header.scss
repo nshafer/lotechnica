@@ -3,7 +3,6 @@
 #main-header {
   @include outer-container;
   border-bottom: $base-border;
-  margin-bottom: 2em;
 
   #masthead {
     padding: 1em 0 .75em;
