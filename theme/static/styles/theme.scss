@@ -13,11 +13,4 @@
 
 #main-page {
   @include outer-container;
-
-  #content {
-    @include row;
-  }
 }
-
-
-
