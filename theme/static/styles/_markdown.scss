@@ -92,6 +92,16 @@
   img {
     display: block;
     margin: $base-spacing auto;
+
+    &.pull-right {
+      float: right;
+      margin: 0 0 $base-spacing $base-spacing;
+    }
+
+    &.pull-left {
+      float: left;
+      margin: 0 $base-spacing $base-spacing 0;
+    }
   }
 
   table {
