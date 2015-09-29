@@ -54,6 +54,7 @@ DEFAULT_METADATA = {
 # Plugins
 PLUGIN_PATHS = ['pelican-plugins']
 PLUGINS = ["render_math"]
+MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'markdown-figures.captions']
 
 # MathJax
 MATH_JAX = {

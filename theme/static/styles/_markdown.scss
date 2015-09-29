@@ -89,7 +89,28 @@
     font-family: $monospace-font-family;
   }
 
-  img {
+  figure {
+    float: right;
+    margin: 0 0 $base-spacing $base-spacing;
+
+    figcaption {
+      text-align: center;
+      font-size: .8em;
+      font-weight: bold;
+    }
+
+    @include media($large-screen-down) {
+      float: none;
+      margin: $base-spacing 0;
+
+      img {
+        display: block;
+        margin: $base-spacing auto;
+      }
+    }
+  }
+
+  & > img {
     display: block;
     margin: $base-spacing auto;
 
