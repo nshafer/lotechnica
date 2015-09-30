@@ -33,11 +33,30 @@
     max-width: none;
     position: relative;
     min-height: 70vh;
+    //height: 70vh;
     padding-top: 45vh;
     padding-bottom: 1em;
     margin-top: 0;
     //margin-left: $gutter / 2 * -1;
     //margin-right: $gutter / 2 * -1;
+
+    // Fix for iPad portrait
+    @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait){
+      min-height: 1024px * .70;
+      padding-top: 1024px * .45;
+    }
+
+    // Fix for iPad landscape
+    @media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape){
+      min-height: 768px * .70;
+      padding-top: 768px * .45;
+    }
+
+    // Fix for iPhone5
+    @media screen and (device-aspect-ratio: 40/71) {
+      min-height: 500px * .70;
+      padding-top: 500px * .45;
+    }
 
     #jumbo-image {
       position: absolute;
