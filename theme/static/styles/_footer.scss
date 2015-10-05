@@ -11,6 +11,25 @@
       font-style: normal;
       margin: 1.5em 0;
 
+      ul.tag-cloud li {
+        display: inline-block;
+        margin-right: 1em;
+        font-size: .8em;
+
+        &.tag-2 {
+          font-size: 1em;
+        }
+        &.tag-3 {
+          font-size: 1.2em;
+        }
+        &.tag-4 {
+          font-size: 1.4em;
+        }
+        &.tag-5 {
+          font-size: 1.6em;
+        }
+      }
+
       @include media($medium-screen-down) {
         text-align: center;
 

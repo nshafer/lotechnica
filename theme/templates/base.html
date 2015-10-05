@@ -147,9 +147,9 @@
 
         <section>
             <h3>Tags</h3>
-            <ul>
-                {% for tag, null in tags %}
-                    <li>
+            <ul class="tag-cloud">
+                {% for tag, articles in tags|sort %}
+                    <li class="{% for null in articles %}tag-{{ loop.index }} {% endfor %}">
                         <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
                     </li>
                 {% endfor %}
