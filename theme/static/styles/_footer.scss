@@ -6,7 +6,7 @@
   margin-top: 2em;
 
   #links {
-    @include row();
+    @include row;
     section, address {
       font-style: normal;
       margin: 1.5em 0;
@@ -49,7 +49,28 @@
     }
   }
 
-  #copyright {
-    font-size: .75em;
+  #subfooter {
+    @include display(flex);
+    @include align-items(flex-end);
+    //@include flex-flow(row nowrap);
+    margin-bottom: 1em;
+
+    #copyright {
+      flex-grow: 1;
+      font-size: .75em;
+
+      p:last-child {
+        margin: 0;
+      }
+
+      #license a {
+        vertical-align: middle;
+      }
+    }
+
+    #subscribe-link {
+      //flex-grow: 1;
+      //float: right;
+    }
   }
 }
