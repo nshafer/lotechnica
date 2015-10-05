@@ -10,8 +10,10 @@ Feel free to use any of this for your own, but please give me credit where due. 
 Jumbo images must conform to this spec:
 
 Article metadata:
-Jumbo_image: images/notes-on-bourbon/whiskey_neat.jpg
-Small_image: images/notes-on-bourbon/whiskey_neat_small.jpg
+    Jumbo_image: images/article-slug/image.jpg
+    Jumbo_color: [dark|light]
+    Small_image: images/article-slug/image.jpg
 
 Jumbo_image should be 1920x1080
+
 Small_image should be 768x432

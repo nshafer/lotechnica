@@ -71,13 +71,24 @@
     }
 
     #title {
-      //display: table-cell;
-      //vertical-align: bottom;
-
       h2 {
         text-shadow: 1px 1px 3px rgba(#fff, .7);
       }
     }
+
+    &.dark #title {
+      h2 {
+        color: $light-gray;
+        text-shadow: 3px 3px 8px rgba(#000, .7);
+
+        a:active,
+        a:focus,
+        a:hover {
+          color: shade($light-gray, 25%);
+        }
+      }
+    }
+
   }
 }
 
