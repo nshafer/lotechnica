@@ -51,6 +51,20 @@
         {% if article.jumbo_image %}
             <div id="jumbo-image" style="background-image: url({{ SITEURL }}/{{ article.jumbo_image }})"></div>
         {% endif %}
+        {% if article.jumbo_attr %}
+            <div id="jumbo-attribution">
+                Image courtesy
+                {% if article.jumbo_attr_link %}
+                    <a target="_blank" href="{{ article.jumbo_attr_link }}">
+                {% endif %}
+
+                {{ article.jumbo_attr }}
+
+                {% if article.jumbo_attr_link %}
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
         <div id="title">
             <h2>
                 <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"

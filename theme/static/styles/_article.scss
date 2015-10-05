@@ -70,25 +70,60 @@
       z-index: -1
     }
 
+    #jumbo-attribution {
+      position: absolute;
+      right: 0;
+      bottom: 1em;
+      font-size: .6em;
+
+      a {
+        color: $medium-gray;
+
+        &:active,
+        &:focus,
+        &:hover {
+          color: shade($medium-gray, 25%);
+        }
+      }
+    }
+
     #title {
       h2 {
         text-shadow: 1px 1px 3px rgba(#fff, .7);
       }
     }
 
-    &.dark #title {
-      h2 {
-        color: $light-gray;
-        text-shadow: 3px 3px 8px rgba(#000, .7);
+    &.dark {
+      color: $light-gray;
 
-        a:active,
-        a:focus,
-        a:hover {
-          color: shade($light-gray, 25%);
+      #title {
+        h2 {
+          color: $light-gray;
+          text-shadow: 3px 3px 8px rgba(#000, .7);
+
+          a:active,
+          a:focus,
+          a:hover {
+            color: shade($light-gray, 25%);
+          }
+        }
+
+      }
+
+      #jumbo-attribution {
+        color: shade($light-gray, 25%);
+
+        a {
+          color: $light-gray;
+
+          &:active,
+          &:focus,
+          &:hover {
+            color: shade($light-gray, 25%);
+          }
         }
       }
     }
-
   }
 }
 

@@ -12,6 +12,8 @@ Jumbo images must conform to this spec:
 Article metadata:
     Jumbo_image: images/article-slug/image.jpg
     Jumbo_color: [dark|light]
+    Jumbo_attr: Text goes here
+    Jumbo_attr_link: http://full.url/and/path
     Small_image: images/article-slug/image.jpg
 
 Jumbo_image should be 1920x1080
