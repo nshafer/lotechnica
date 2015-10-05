@@ -39,6 +39,9 @@
         {% if article.og_image %}
             <meta property="og:image"
                   content="{{ SITEURL }}/{{ article.og_image }}"/>
+        {% elif article.small_image %}
+            <meta property="og:image"
+                  content="{{ SITEURL }}/{{ article.small_image }}"/>
         {% elif OPEN_GRAPH_IMAGE %}
             <meta property="og:image"
                   content="{{ SITEURL }}/{{ OPEN_GRAPH_IMAGE }}"/>
