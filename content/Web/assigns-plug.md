@@ -1,5 +1,6 @@
 Title: A Phoenix Plug for assigning template variables
 Date: 2015-10-05
+Modified: 2015-10-14
 Status: published
 Small_image: images/phoenix/plug_small.jpg
 Jumbo_image: images/phoenix/plug.jpg
@@ -9,6 +10,8 @@ Jumbo_color: dark
 Tags: phoenix, elixir, plug
 
 Here's a quick [Plug](http://www.phoenixframework.org/v0.11.0/docs/understanding-plug) for a [Phoenix](http://www.phoenixframework.org/) project that allows you to quickly and easily set template variables (assigns) in either a [Pipeline](http://www.phoenixframework.org/docs/routing) or for all actions in a controller. I used this recently as a way to set a variable, `admin: true`, for all of my controllers under an `/admin` scope.  I also used it to set a `subsection` variable for the different controllers that make up the different parts of the site so that my Layout template could mark which section of the site the user was currently on in the site navigation header.
+
+>***Update 10/14/15**: I went ahead and published this as a self-contained hex package, if nothing else than as an exercise in publishing things.  It's [available on hex.pm](https://hex.pm/packages/plug_assign/1.0.0)*
 
 ### The Plug
 
