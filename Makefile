@@ -12,10 +12,10 @@ FTP_HOST=localhost
 FTP_USER=anonymous
 FTP_TARGET_DIR=/
 
-SSH_HOST=localhost
-SSH_PORT=22
-SSH_USER=root
-SSH_TARGET_DIR=/var/www
+SSH_HOST=rake.lotech.org
+SSH_PORT=442
+SSH_USER=nate
+SSH_TARGET_DIR=/web/blog.lotech.org/
 
 S3_BUCKET=blog.lotech.org
 
