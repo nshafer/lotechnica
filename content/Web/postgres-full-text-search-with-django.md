@@ -207,6 +207,8 @@ This gives us the functionality we want, but this isn't the best way to go about
 Django provides a special field that allows us to store pre-calculated vectors in a field called `SearchVectorField`. We'll add that field to our Post model:
 
 ```python
+from django.contrib.postgres.search import SearchVectorField
+
 class Post(models.Model):
     ...
     search_vector = SearchVectorField(null=True)
