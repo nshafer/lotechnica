@@ -14,9 +14,10 @@ AUTHOR_SAVE_AS = ''
 
 USE_FOLDER_AS_CATEGORY = True
 
+# Locale settings
 TIMEZONE = 'America/Phoenix'
-
 DEFAULT_LANG = u'en'
+DEFAULT_DATE_FORMAT = '%B %-d, %Y'
 
 # Theme settings
 THEME = "theme"

@@ -32,10 +32,10 @@
   &.jumbo {
     max-width: none;
     position: relative;
-    min-height: 70vh;
-    //height: 70vh;
-    padding-top: 45vh;
-    padding-bottom: 1em;
+    //min-height: 70vh;
+    height: 40vh;
+    //padding-top: 10vh;
+    //padding-bottom: 1em;
     margin-top: 0;
     //margin-left: $gutter / 2 * -1;
     //margin-right: $gutter / 2 * -1;
@@ -88,8 +88,14 @@
     }
 
     #title {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
       h2 {
         text-shadow: 1px 1px 3px rgba(#fff, .7);
+      }
+      footer {
+        color: $dark-gray;
       }
     }
 
@@ -106,6 +112,10 @@
           a:hover {
             color: shade($light-gray, 15%);
           }
+        }
+        footer {
+          color: $light-gray;
+          text-shadow: 0 0 2px rgba(#000, .9);
         }
 
       }
