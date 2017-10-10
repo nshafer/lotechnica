@@ -258,8 +258,8 @@ FROM (
               AS vector
      FROM blog_post AS post
      JOIN blog_author AS author ON author.id = post.author_id
-     JOIN blog_post_tags AS post_tags ON post_tags.post_id = post.id
-     JOIN blog_tag AS tag ON tag.id = post_tags.tag_id
+     LEFT JOIN blog_post_tags AS post_tags ON post_tags.post_id = post.id
+     LEFT JOIN blog_tag AS tag ON tag.id = post_tags.tag_id
      GROUP BY post.id, author.id
    ) AS document
 WHERE blog_post.id = document.id;
@@ -397,8 +397,8 @@ BEGIN
   INTO NEW.search_vector
   FROM blog_post AS post
   JOIN blog_author AS author ON author.id = post.author_id
-  JOIN blog_post_tags AS post_tags ON post_tags.post_id = post.id
-  JOIN blog_tag AS tag ON tag.id = post_tags.tag_id
+    LEFT JOIN blog_post_tags AS post_tags ON post_tags.post_id = post.id
+    LEFT JOIN blog_tag AS tag ON tag.id = post_tags.tag_id
   WHERE post.id = NEW.id
   GROUP BY post.id, author.id;
   RETURN NEW;
@@ -407,7 +407,7 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER search_vector_update BEFORE INSERT OR UPDATE ON blog_post
   FOR EACH ROW EXECUTE PROCEDURE post_search_vector_trigger();
   
--- Trigger after blog.Author is update
+-- Trigger after blog.Author is updated
 CREATE OR REPLACE FUNCTION author_search_vector_trigger() RETURNS trigger AS $$
 BEGIN
   UPDATE blog_post SET id = id WHERE author_id = NEW.id;
@@ -417,7 +417,7 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER search_vector_update AFTER INSERT OR UPDATE ON blog_author
   FOR EACH ROW EXECUTE PROCEDURE author_search_vector_trigger();
 
--- Trigger after blog.Post.tags are added, update or deleted
+-- Trigger after blog.Post.tags are added, deleted from a post
 CREATE OR REPLACE FUNCTION tags_search_vector_trigger() RETURNS trigger AS $$
 BEGIN
   IF (TG_OP = 'DELETE') THEN
@@ -431,6 +431,18 @@ END;
 $$ LANGUAGE plpgsql;
 CREATE TRIGGER search_vector_update AFTER INSERT OR UPDATE OR DELETE ON blog_post_tags
   FOR EACH ROW EXECUTE PROCEDURE tags_search_vector_trigger();
+
+-- Trigger after blog.Tag is updated
+CREATE OR REPLACE FUNCTION tag_search_vector_trigger() RETURNS trigger AS $$
+BEGIN
+  UPDATE blog_post SET id = id WHERE id IN (
+    SELECT post_id FROM blog_post_tags WHERE tag_id = NEW.id
+  );
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+CREATE TRIGGER search_vector_update AFTER UPDATE ON blog_tag
+  FOR EACH ROW EXECUTE PROCEDURE tag_search_vector_trigger();
 ```
 
 # Conclusion
@@ -443,6 +455,12 @@ For more information and more features, such as language support, custom stemmin
 - [Official Django Postgres Search Documentation][django-pg-search]
 - [Postgres full-text search is Good Enough][pg-is-good-enough]: Great article on the basics of Postgres full-text search.
 - [An example project][github-project] that this blog post goes along with.
+
+# Updates to this article
+## 10/10/17
+- Fixed SQL queries that were doing INNER joins on Tags, which would cause the queries to return nothing
+  if no tags were applied. Switch to LEFT OUTER JOINs.
+- Added another sample Trigger to update search_vectors when tag names are changed.
 
 [django-pg-search]: https://docs.djangoproject.com/en/1.11/ref/contrib/postgres/search/
 [django-searchvector]: https://docs.djangoproject.com/en/1.11/ref/contrib/postgres/search/#searchvector
