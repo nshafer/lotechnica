@@ -201,7 +201,7 @@ Would be
 $$
 \begin{bmatrix}
   \text{a}_{11} \times \text{b}_{11} + \text{a}_{12} \times \text{b}_{21} + \text{a}_{tx} \times 0
-    & \text{a}_{11} \times \text{b}_{21} + \text{a}_{12} \times \text{b}_{22} + \text{a}_{tx} \times 0
+    & \text{a}_{11} \times \text{b}_{12} + \text{a}_{12} \times \text{b}_{22} + \text{a}_{tx} \times 0
     & \text{a}_{11} \times \text{b}_{tx} + \text{a}_{12} \times \text{b}_{ty} + \text{a}_{tx} \times 1 \\
   \text{a}_{21} \times \text{b}_{11} + \text{a}_{22} \times \text{b}_{21} + \text{a}_{ty} \times 0
     & \text{a}_{21} \times \text{b}_{12} + \text{a}_{22} \times \text{b}_{22} + \text{a}_{ty} \times 0
