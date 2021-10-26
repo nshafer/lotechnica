@@ -1,9 +1,0 @@
-[submodule "pelican-plugins"]
-	path = pelican-plugins
-	url = https://github.com/getpelican/pelican-plugins.git
-[submodule "pelican-bootstrap3"]
-	path = pelican-bootstrap3
-	url = https://github.com/DandyDev/pelican-bootstrap3.git
-[submodule "markdown-figures"]
-	path = markdown-figures
-	url = https://github.com/helderco/markdown-figures.git

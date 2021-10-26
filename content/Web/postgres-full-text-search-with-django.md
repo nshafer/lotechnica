@@ -101,7 +101,7 @@ document=Concat(
 Post.objects.annotate(document=document).values_list('document', flat=True)
 ```
 
-```
+```text
 <QuerySet [
   "Django, the western character Django is a character who appears in a
     number of spaghetti western films. Jim Blogwriter Django",
@@ -131,7 +131,7 @@ vector=SearchVector('title', weight='A') + \
 Post.objects.annotate(document=vector).values_list('document', flat=True)
 ```
 
-```
+```text
 <QuerySet [
   "'appear':10C 'blogwrit':19B 'charact':4A,8C 'django':1A,5C,20B 'film':17C
     'jim':18B 'number':13C 'spaghetti':15C 'western':3A,16C",
@@ -193,7 +193,7 @@ Post.objects\
     .order_by('-rank')\
     .values_list('title', 'rank')
 ```
-```
+```text
 <QuerySet [
   ('Django, the western character', 0.665342),
   ('Python is a programming language', 0.364756)

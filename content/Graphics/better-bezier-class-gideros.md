@@ -39,7 +39,7 @@ end
 
 This gives us 101 points for the cubic curve {100,100}, {800,250}, {800,100}, {150,200}.  This isn't too bad, as it gives us enough for it to be smooth, but using way too many points.  Much longer curves will end up with too-few points and could appear jagged, and much shorter curves will end up with too many.
 
-![Steps: 100, Epsilon: 0]({filename}/images/better-bezier-class-gideros/steps100_epsilon0.png)
+![Steps: 100, Epsilon: 0]({static}/images/better-bezier-class-gideros/steps100_epsilon0.png)
 
 ### Automatic estimation of steps
 
@@ -64,7 +64,7 @@ end
 
 This gives us 153 points for this particular curve.  This will help smooth out tight turns in curves much larger than this, but is way too many for most parts of the curve, such as the long straight parts.  So by itself, this isn't much of a solution.
 
-![Steps: auto, Epsilon: 0]({filename}/images/better-bezier-class-gideros/stepsauto_epsilon0.png)
+![Steps: auto, Epsilon: 0]({static}/images/better-bezier-class-gideros/stepsauto_epsilon0.png)
 
 ### Reduction of points
 
@@ -130,7 +130,7 @@ end
 
 This now gives us 34 points.  It spreads them out on the straighter parts, but packs them in on the sharp corners so they will appear as smooth as the un-reduced version.  So visually this is exactly what I wanted, but at what cost?
 
-![Steps: auto, Epsilon: 0.1]({filename}/images/better-bezier-class-gideros/stepsauto_epsilonpoint1.png)
+![Steps: auto, Epsilon: 0.1]({static}/images/better-bezier-class-gideros/stepsauto_epsilonpoint1.png)
 
 ### Performance
 
@@ -146,7 +146,7 @@ Auto steps, .1 epsilon  | 34      | 0.21ms   | 0.67ms  | 0.82ms    | 1.70ms
 
 The full class and a test project is [available at github](https://github.com/nshafer/Bezier).
 
-![Screenshot of Bezier test program]({filename}/images/better-bezier-class-gideros/Bezier_test_program.png)
+![Screenshot of Bezier test program]({static}/images/better-bezier-class-gideros/Bezier_test_program.png)
 
 ### Further
 

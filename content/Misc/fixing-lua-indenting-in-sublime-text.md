@@ -31,11 +31,11 @@ In that file you'll see keys labeled, `increaseIndentPattern` and `decreaseInden
 
 First, whenever you nested curly braces, indenting any curly braces after the first one would end up with something like this:
 
-![Invalid tabbing for nested curly braces]({filename}/images/fixing-sublime-lua/sublime_curly_bad.png)
+![Invalid tabbing for nested curly braces]({static}/images/fixing-sublime-lua/sublime_curly_bad.png)
 
 When instead we want something like this:
 
-![Valid tabbing for nested curly braces]({filename}/images/fixing-sublime-lua/sublime_curly_good.png)
+![Valid tabbing for nested curly braces]({static}/images/fixing-sublime-lua/sublime_curly_good.png)
 
 The fix for this is pretty easy. We want to edit the `increaseIndentPattern`
 
@@ -62,7 +62,7 @@ This does mean that it will indent ANY line ending in a curly brace.
 
 The other problem is improper indentation of the "elseif" statement. Basically sublime gets really confused because it matches "else" then "elseif" and then "elseif" with something after it, and it ends up not recognizing the statement as valid, and doesn't know to unindent it. It looks like this bit of strangeness:
 
-![Bad elsif indentation]({filename}/images/fixing-sublime-lua/sublime_elseif_bad.gif)
+![Bad elsif indentation]({static}/images/fixing-sublime-lua/sublime_elseif_bad.gif)
 
 The problem here lies in the "decreaseIndentPattern" part.
 
@@ -79,7 +79,7 @@ This works fine for "else" and "end" because the don't have anything after them.
 
 After the "|" we put in, it matches zero or more whitespace, the word "elseif" followed by a word boundary, then it does a look-ahead to match any character that doesn't follow "end" zero or more times before finding the end-of-line. This results in proper behavior:
 
-![Good elsif indentation]({filename}/images/fixing-sublime-lua/sublime_elseif_good.gif)
+![Good elsif indentation]({static}/images/fixing-sublime-lua/sublime_elseif_good.gif)
 
 ### Fully fixed file
 

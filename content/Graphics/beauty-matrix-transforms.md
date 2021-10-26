@@ -423,7 +423,7 @@ box:setMatrix(matrix)
 
 ### Full code and Sample project
 
-![Screenshot of AnchorSprite implementation]({filename}/images/beauty-matrix-transforms/Matrix.png){.pull-right}
+![Screenshot of AnchorSprite implementation]({static}/images/beauty-matrix-transforms/Matrix.png){.pull-right}
 
 I have made the full code to this Matrix extension available on Github.  You can view just the [Matrix class extensions](https://github.com/nshafer/Matrix/blob/master/Matrix.lua) or a full [example Gideros project](https://github.com/nshafer/Matrix) that shows the code in action.  The code is the same as in this post, plus a few extra convenience methods.
 
@@ -446,7 +446,7 @@ I'd like to thank the following wonderful references that I read when I was lear
 
 I'll soon post followups to this post showing a couple examples of how I used this new Matrix class to implement a movable anchor for Gideros Sprites, and to parse SVG files and all their transforms.  For example, here's my <a href="https://github.com/nshafer/AnchorSprite">AnchorSprite implementation</a>, which supports moving the anchor for a sprite from [0,0] to anywhere you want, and affects all position, rotation, scale and skew operations.
 
-![Screenshot of AnchorSprite implementation]({filename}/images/beauty-matrix-transforms/AnchorSprite_cap.png)
+![Screenshot of AnchorSprite implementation]({static}/images/beauty-matrix-transforms/AnchorSprite_cap.png)
 
 ### More on 3D
 

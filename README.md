@@ -29,7 +29,14 @@ Run pelican and dev server on port 7000
 make devserver
 ```
 
-[Open in browser](http://localhost:7000/)
+Optionally run sass on theme styles.
+
+```bash
+cd theme/static/styles
+sass -w theme.scss theme.css
+```
+
+[Open in browser](http://localhost:8000/)
 
 ## Publish
 

@@ -1,11 +1,7 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*- #
-from __future__ import unicode_literals
-
-AUTHOR = u'Nathan Shafer'
-SITENAME = u'Lotechnica'
-SITESUBTITLE = u"Technical writings by Nathan Shafer"
-SITEURL = 'http://blog.lotech.org'
+AUTHOR = 'Nathan Shafer'
+SITENAME = 'Lotechnica'
+SITESUBTITLE = "Technical writings by Nathan Shafer"
+SITEURL = 'https://blog.lotech.org'
 
 PATH = 'content'
 STATIC_PATHS = ['images', 'static']
@@ -16,7 +12,7 @@ USE_FOLDER_AS_CATEGORY = True
 
 # Locale settings
 TIMEZONE = 'America/Phoenix'
-DEFAULT_LANG = u'en'
+DEFAULT_LANG = 'en'
 DEFAULT_DATE_FORMAT = '%B %-d, %Y'
 
 # Theme settings
@@ -35,15 +31,14 @@ AUTHOR_FEED_RSS = None
 
 # Blogroll
 LINKS = (
-    ('Normal Technologies LLC', 'http://www.normal-tech.com/'),
-    ('Type-in Games', 'http://www.typeingames.com/'),
-    ('AnswerCast', 'http://www.typeingames.com/answercast/'),
+    ('Normal Technologies LLC', 'https://www.normal.tech/'),
+    ('Type-in Games', 'https://www.typeingames.com/'),
+    ('AnswerCast', 'https://www.typeingames.com/answercast/'),
 )
 
 # Social widget
 SOCIAL = (
     ('GitHub', 'https://www.github.com/nshafer'),
-    ('Google Plus', 'https://www.google.com/+NathanShafer'),
 )
 
 DEFAULT_PAGINATION = 40
@@ -53,14 +48,21 @@ DEFAULT_METADATA = {
 }
 
 # Plugins
-PLUGIN_PATHS = ['pelican-plugins']
-PLUGINS = ["render_math"]
-MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'markdown-figures.captions']
-
-# MathJax
-MATH_JAX = {
-    'responsive': True
-}
+# PLUGIN_PATHS = ['pelican-plugins']
+# PLUGINS = ["render_math"]
+# MARKDOWN = {
+#     'extension_configs': {
+#         'markdown.extensions.codehilite': {'css_class': 'highlight'},
+#         'markdown.extensions.extra': {},
+#         'markdown.extensions.meta': {},
+#     },
+#     'output_format': 'html5',
+# }
+#
+# # MathJax
+# MATH_JAX = {
+#     'responsive': True
+# }
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True

@@ -48,8 +48,7 @@ Semantic markup is awesome.  This is what attracted me to Bourbon Neat in the fi
 
 The result is very clean and readable, and does not contain deep nesting of responsive `.row` and `.col-xx-xx` classes.
 
-![3D view of site hierarchy]({filename}/images/notes-on-bourbon/3d-depth2.jpg "Flat hierarchy")
-:   Page heirarchy remains pretty flat
+![3D view of site hierarchy]({static}/images/notes-on-bourbon/3d-depth2.jpg "Flat hierarchy"){.pull-right}
 
 Performance wise, this is good because the page remains flatter, thus making it easier for the browser to render.  You can see what this looks like to the right in Firefox's 3D view.  Maintenance wise, this means the presentation logic for the different breakpoints are contained in one place, the `.scss` file.  In the future it will be much easier to tweak this layout, and most likely not require any changes to the HTML.
 
