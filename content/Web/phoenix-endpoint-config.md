@@ -70,7 +70,7 @@ However, since this runs before `Myapp.Repo` is started, it will fail with the e
 
 If this callback stays deprecated, this is a way to configure the endpoint dynamically before it starts up, but after the rest of the supervision tree has been started, such as after the Ecto Repo is running and available. It works by intercepting the `start_link/1` call from the main Supervisor, then starting the Endpoint.Supervisor directly with options derived at that point in time.
 
-First, create a new module: "/lib/myapp_web/endpoint/config.ex" with these contents, but with the `@otp_app` and all occurances of `MyappWeb` replaced with your actual module name.
+First, create a new module: "/lib/myapp_web/endpoint/config.ex" with these contents, but with all occurances of `MyappWeb` replaced with your actual module name.
 
 ```elixir
 defmodule MyappWeb.Endpoint.Config do
@@ -92,8 +92,6 @@ defmodule MyappWeb.Endpoint.Config do
   Supervisor to fetch the configuration options at that point. This will happen after the
   previous children in the main Supervision tree are already started.
   """
-
-  @otp_app :myapp
 
   def child_spec(opts) do
     %{
