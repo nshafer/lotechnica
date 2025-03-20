@@ -17,5 +17,5 @@ DELETE_OUTPUT_DIRECTORY = True
 # Following items are often useful when publishing
 
 # Third party stuff
-DISQUS_SITENAME = "lotechnica"
+# DISQUS_SITENAME = "lotechnica"
 GOOGLE_ANALYTICS = "UA-1265457-3"
