@@ -100,23 +100,18 @@
 
             <ul>
                 <li>
-                    <a class="btn btn-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ SITEURL|striptags|escape }}/{{ article.url|striptags|escape }}&t={{ article.title|striptags|escape }}" target="_blank" title="Share on Facebook">
-                        <i class="fa fa-facebook"></i> Facebook
-                    </a>
-                </li>
-                <li>
-                    <a class="btn btn-twitter" href="https://twitter.com/intent/tweet?source={{ SITEURL|striptags|escape }}/{{ article.url|striptags|escape }}&text={{ article.title|striptags|escape }}" target="_blank" title="Tweet">
-                        <i class="fa fa-twitter"></i> Twitter
+                    <a class="btn btn-bluesky" href="https://bsky.app/intent/compose?text={{ article.title|striptags|escape }}%0A%0A{{ SITEURL|striptags|escape }}/{{ article.url|striptags|escape }}" target="_blank" title="Share on Bluesky">
+                        <i class="fa-brands fa-bluesky"></i> Bluesky
                     </a>
                 </li>
                 <li>
                     <a class="btn btn-reddit" href="http://www.reddit.com/submit?url={{ SITEURL|striptags|escape }}/{{ article.url|striptags|escape }}&title={{ article.title|striptags|escape }}" target="_blank" title="Submit to Reddit">
-                        <i class="fa fa-reddit"></i> Reddit
+                        <i class="fa-brands fa-reddit"></i> Reddit
                     </a>
                 </li>
                 <li>
                     <a class="btn btn-email" href="mailto:?subject={{ article.title|striptags|escape }}&body=Article+from+{{ SITENAME }}%0D%0A%0D%0A{{ SITEURL|striptags|escape }}/{{ article.url|striptags|escape }}%0D%0A%0D%0A{{ article.summary|striptags|escape }}" target="_blank" title="Email">
-                        <i class="fa fa-envelope"></i> Email
+                        <i class="fa-brands fa-envelope"></i> Email
                     </a>
                 </li>
             </ul>

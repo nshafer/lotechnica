@@ -34,6 +34,17 @@
   }
 }
 
+$bluesky-color: #0084fd;
+a.btn-bluesky {
+  background: $bluesky-color;
+
+  &:hover,
+  &:focus {
+    background-color: shade($bluesky-color, 20%);
+    color: #fff;
+  }
+}
+
 $facebook-color: #3b5998;
 a.btn-facebook {
   background: $facebook-color;
