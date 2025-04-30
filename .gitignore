@@ -2,8 +2,8 @@ pelican.pid
 srv.pid
 .sass-cache
 *.sublime-workspace
-.idea/workspace.xml
-.idea/tasks.xml
+.idea
+.vscode
 output
 *.pyc
 theme/node_modules
