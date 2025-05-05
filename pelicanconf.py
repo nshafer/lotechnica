@@ -50,14 +50,17 @@ DEFAULT_METADATA = {
 # Plugins
 # PLUGIN_PATHS = ['pelican-plugins']
 # PLUGINS = ["render_math"]
-# MARKDOWN = {
-#     'extension_configs': {
-#         'markdown.extensions.codehilite': {'css_class': 'highlight'},
-#         'markdown.extensions.extra': {},
-#         'markdown.extensions.meta': {},
-#     },
-#     'output_format': 'html5',
-# }
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+        'markdown.extensions.toc': {},
+        'markdown.extensions.admonition': {},
+        'pymdownx.superfences': {}
+    },
+    'output_format': 'html5',
+}
 #
 # # MathJax
 # MATH_JAX = {

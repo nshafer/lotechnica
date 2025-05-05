@@ -23,11 +23,14 @@ $blue: #477dca;
 $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
+$yellow: #f0ad4e;
+$red: #ac1212;
 
 // Font Colors
 $base-font-color: #555;
 $heading-font-color: #333;
 $action-color: #225C44;
+$action-light: #E4EEE5;
 
 // Border
 $base-border-color: $light-gray;
@@ -35,7 +38,7 @@ $base-border: 1px solid $base-border-color;
 
 // Background Colors
 $base-background-color: #ffffff;
-$secondary-background-color: tint($base-border-color, 75%);
+$secondary-background-color: tint($base-border-color, 70%);
 
 // Cards
 $base-card-background-color: #fff;
