@@ -1,30 +1,35 @@
-Title: Configuring a dev environment for Phoenix library development
+Title: Configuring a dev environment for Phoenix package development
 Date: 2025-05-05
 Status: published
 Tags: phoenix, elixir
 
-The great tooling around Elixir makes it easy to publish reusable bits of code as packages on the [hex](https://hex.pm/) registry.
-Mix makes it easy to create new library project with `mix new`, and [publishing to hex](https://hex.pm/docs/publish) is simple with some configuration and running `mix hex.publish`.
-Conversely, Phoenix projects are created with a great developer experience, featuring live reload and automatic code compilation.
+When developing a [hex](https://hex.pm/) package intended to be used with [Phoenix](https://phoenixframework.org/) projects, such as a component library, plug, `on_mount` callback, or any other piece of shared code, Phoenix needs some extra configuration to enable the great developer experience we have come to expect.
+By default, a Phoenix app will only reload its own code, and only prompt the browser to live reload when you make changes to files in that project.
+So this makes it challenging if you're making changes to a mix package in one directory, and testing with a Phoenix project in another.
 
-However, if you want to develop a new package for use with Phoenix, such as a component library, LiveView `on_mount` plugin, or any other piece of shared code, then the DX story isn't so great out of the box.
-If you're developing your package in one dir that's set up to publish, and testing it with a separate Phoenix project, you won't have live reload or auto code reloading by default.
+This is a quick guide on a few ways I've found to configure Phoenix that makes developing a package much nicer, and enables live reloading for faster iterations while developing.
 
-This is a quick guide on a few ways I've found to configure Phoenix that makes developing a package much nicer, and enables quick reactivity and live reloading while developing.
 Read on for some explanation behind how Phoenix does code and live reloading, or skip to one of these solutions to bootstrap your project with.
 
 - **[Option 1](#option-1-sibling-projects)**: Creating two "sibling" projects, your package and a Phoenix project, side by side in the same parent directory. (Similar to a [poncho project](https://embedded-elixir.com/post/2017-05-19-poncho-projects/).)
 2. **[Option 2](#option-2-a-subdir-phoenix-project)**: Creating a Phoenix project as a subdir inside your package dir, all as a monorepo.
-3. **[Option 3](#option-3-umbrella)**: Using an umbrella project and publishing your library straight from its "app/" subdirectory. (Not recommended!)
+3. **[Option 3](#option-3-umbrella)**: Using an umbrella project and publishing your library straight from its "app/" subdirectory. (Not recommended)
 
 # Understanding the Phoenix Developer Experience
 
 There are two modules that give us the live reload experience when developing Phoenix applications, so that changes to source files appear in the browser without having to restart our server or reload the page.
 
+For these explanations it is assumed you have a regular mix package called "my_library" in one directory, and a phoenix application called "my_app" in another directory.
+
 ## The Code Reloader
 
-The first is [`Phoenix.CodeReloader`](https://hexdocs.pm/phoenix/Phoenix.CodeReloader.html), which is included in the `:phoenix` package.
-This is a Plug that you can see in your "my_app_web/endpoint.ex" file as `plug Phoenix.CodeReloader`.
+The first is [`Phoenix.CodeReloader`](https://hexdocs.pm/phoenix/Phoenix.CodeReloader.html), which is included in the [`:phoenix`](https://hex.pm/packages/phoenix) package.
+This is a plug that you can see in your "my_app_web/endpoint.ex" file as:
+
+```elixir
+plug Phoenix.CodeReloader
+```
+
 Whenever it handles a request, it uses mix to (re)compile your app before processing the rest of the plug pipeline.
 
 It's important to note a few things:
@@ -59,7 +64,7 @@ in your logs whenever you make a request and there has been a change in the `:my
 
 ## The Live Reloader
 
-The second piece of the puzzle is [`Phoenix.LiveReloader`](https://hexdocs.pm/phoenix_live_reload/Phoenix.LiveReloader.html) which is contained in the `:phoenix_live_reload` package.
+The second piece of the puzzle is [`Phoenix.LiveReloader`](https://hexdocs.pm/phoenix_live_reload/Phoenix.LiveReloader.html) which is contained in the [`:phoenix_live_reload`](https://hex.pm/packages/phoenix_live_reload) package.
 This uses the `:file_system` package to monitor changes to files on disk and then notify the browser when it detects changes.
 You can see this in your "my_app_web/endpoint.ex" file as:
 
@@ -76,9 +81,8 @@ A few notes about this module:
 - This is only for dev environments, and should never be used in production.
 
 Again, [buried deep in the docs](https://hexdocs.pm/phoenix_live_reload/Phoenix.LiveReloader.html#module-configuration) is a note about configuring `Phoenix.LiveReloader` to work with umbrella apps that we can use to configure it for broader use in non-umbrella apps.
-Nowhere else can I find the `:dirs` option documented, and that's probably because the value of it is passed directly to the `:file_system` module.
-[The docs](https://hexdocs.pm/file_system/FileSystem.html#start_link/1) for `FileSystem.start_link/1` tell us that it's the list of directories to monitor.
-The default is to watch `[""]` which `FileSystem` just interprets as the current working dir (cwd).
+It has an option, `:dirs`, which is a list of directories for it to watch for changes, which is [passed directly to the FileSystem](https://hexdocs.pm/file_system/FileSystem.html#start_link/1) module.
+The default is to watch `[""]` which is interpreted as the current working dir (CWD).
 
 So if you want to watch more than one directory, such as your app and a dependency, that can be done with this, for example:
 
@@ -88,8 +92,8 @@ config :phoenix_live_reload, :dirs, ["", "../my_library"]
 ```
 
 This will cause `FileSystem` to monitor all changes in the current directory as well as a sibling "my_library/" directory.
-However, in a new phoenix project, notifications are filtered so the browser doesn't reload unless a source file for our app is modified.
-You wouldn't want your browser constantly reloading every time some temporary, build or cache files changed, after all.
+However, in a typical phoenix project, notifications are filtered so the browser doesn't reload unless a source file for our app is modified.
+You wouldn't want your browser constantly reloading every time some build or cache files changed, after all.
 The default config looks something like this:
 
 ```elixir
@@ -105,7 +109,8 @@ config :my_app, MyAppWeb.Endpoint,
 ```
 
 It's important to note that when `Phoenix.LiveReloader` gets a notification of a file changing in any of the configured `:dirs`, the path given to it will be an absolute path.
-So if we want to notify the browser when any file changes in our "../my_library" dir that we added above, then we just have to add this pattern: 
+
+So if we want to notify the browser when any file changes in our "my_library" dir that it's now monitoring, then we just have to add this pattern: 
 
 ```elixir
 ~r"lib/my_library.*(ex|heex)$"
@@ -122,8 +127,9 @@ This will match any path ending with this pattern, such as "/path/to/my_library/
 
 Now let's look at 3 different ways of configuring a development setup.
 In each example our goal is to be able to publish a module called `MyLibrary` in a package named `:my_library`.
-The hex package format basically requires a "mix.exs" with a few keys defined, and a list of dependencies that are required by your package.
+The hex package format basically requires a "mix.exs" with a few keys defined, a list of dependencies that are required by your package, and of course some code, typically in "lib/".
 These dependencies will be installed along with your package when someone does a `mix deps.get` after adding your package to their list of dependencies, so you should be careful with these dependency requirements.
+
 See the [hex publishing guide](https://hex.pm/docs/publish) for more information than we'll cover here.
 
 ## Option 1: Sibling projects
@@ -241,7 +247,7 @@ However, make any kind of change to the function component in "my_library/lib/my
 2. Even hitting reload doesn't cause the change to show up.
 3. Only stopping and starting the server will make the change appear in the browser.
 
-So first let's get `Phoenix.CodeReloader` working so that `MyLibrary` is recompiled when it changes and the server gets a request.
+So first let's get `Phoenix.CodeReloader` working so that `MyLibrary` is recompiled when the server gets a request.
 This is as easy as adding this to our "my_app/config/dev.exs".
 
 ```elixir
@@ -249,7 +255,8 @@ This is as easy as adding this to our "my_app/config/dev.exs".
 config :my_app, MyAppWeb.Endpoint, reloadable_apps: [:my_app, :my_library]
 ```
 
-Restart your Phoenix server, make another change to "my_library/lib/my_library.ex", then refresh your browser and you should see the change appear, and a line about compiling "my_library" in your console.
+Restart your Phoenix server, make another change to "my_library/lib/my_library.ex", then refresh your browser.
+You should see the change appear, and a line about compiling "my_library" in your console.
 
 Now that's done, let's get the browser to do the refreshing automatically, by configuring `Phoenix.LiveReloader`.
 Again, in "my_app/config/dev.exs" add this line:
@@ -321,7 +328,7 @@ defp deps do
 end
 ```
 
-Finally, we'll check if we're using a relative path in "config/dev.exs" and enable the config changes for live reloading.
+Finally, we'll configure things in "config/dev.exs" to use the discovered path for live reloading. 
 
 ```elixir
 # Configure Phoenix.CodeReloader to reload my_library as well as this application on every request
@@ -511,7 +518,7 @@ However, make any kind of change to the function component in "my_library/lib/my
 2. Even hitting reload doesn't cause the change to show up.
 3. Only stopping and starting the server will make the change appear in the browser.
 
-So first let's get `Phoenix.CodeReloader` working so that `MyLibrary` is recompiled when it changes and the server gets a request.
+So first let's get `Phoenix.CodeReloader` working so that `MyLibrary` is recompiled when the server gets a request.
 This is as easy as adding this to our "my_library/my_app/config/dev.exs".
 
 ```elixir
@@ -519,7 +526,8 @@ This is as easy as adding this to our "my_library/my_app/config/dev.exs".
 config :my_app, MyAppWeb.Endpoint, reloadable_apps: [:my_app, :my_library]
 ```
 
-Restart your Phoenix server, make another change to "my_library/lib/my_library.ex", then refresh your browser and you should see the change appear, and a line about compiling "my_library" in your console.
+Restart your Phoenix server, make another change to "my_library/lib/my_library.ex", then refresh your browser.
+You should see the change appear, and a line about compiling "my_library" in your console.
 
 Now that's done, let's get the browser to do the refreshing automatically, by configuring `Phoenix.LiveReloader`.
 Again, in "config/dev.exs" add this line:
@@ -611,7 +619,7 @@ defmodule MyLibrary do
   end
 end
 ```
-1. Edit "mix.exs" to add required hex package info in the main `project/0` function:
+1. Edit "apps/my_library/mix.exs" to add required hex package info in the main `project/0` function:
 ```elixir
 def project do
   [
@@ -675,9 +683,9 @@ get "/hello/:name", PageController, :hello
 
 At this point you should have a working page that uses the function component from your library.
 You should even be able to make a change to "apps/my_library/lib/my_library.ex", refresh the page, and see the changes.
-This is because `Phoenix.CodeReloader` detects that it's running in an umbrella app, and by default will recompile all apps every time it gets a request.
+This is because `Phoenix.CodeReloader` detects that it's running in an umbrella app, and by default will recompile all umbrella apps every time it gets a request.
 This is the only real advantage of umbrellas (but still not worth it, imo.)
-However, you still have to refresh the page to see the pages, so let's get `Phoenix.LiveReloader` working as well so it auto-refreshes.
+However, you still have to refresh the page to see the changes, so let's get `Phoenix.LiveReloader` working as well so it auto-refreshes.
 
 In "config/dev.exs" add these lines, per [the example in the docs](https://hexdocs.pm/phoenix_live_reload/Phoenix.LiveReloader.html#module-configuration).
 
@@ -691,7 +699,7 @@ config :phoenix_live_reload, :dirs, [
 ]
 ```
 
-This will cause `Phoenix.LiveReloader` to now watch both of those apps directories for changes.
+This will cause `Phoenix.LiveReloader` to now watch both of those app directories for changes.
 However, it will most likely be filtering out these notifications, so we'll need to also add a line to the patterns so that it includes these changes as valid.
 
 ```elixir
